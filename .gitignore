@@ -1,0 +1,32 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local inputs and generated output
+/inputs/
+/data/
+/work/
+/results/
+/outputs/
+/demo_output/
+/spatial_demo_output/
+/prepared_inputs/
+*.log
+*.tmp
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

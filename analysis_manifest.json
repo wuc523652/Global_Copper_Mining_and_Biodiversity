@@ -1,0 +1,260 @@
+[
+  {
+    "step": "01",
+    "file": "analysis/01_build_global_grid.py",
+    "purpose": "Build the global land grid",
+    "dependencies": [],
+    "raw_inputs": [
+      "gadm"
+    ],
+    "intermediate_inputs": [],
+    "output_directory": "01_grid"
+  },
+  {
+    "step": "02",
+    "file": "analysis/02_calculate_rarity_weighted_richness.py",
+    "purpose": "Calculate area-weighted rarity richness",
+    "dependencies": [
+      "01"
+    ],
+    "raw_inputs": [
+      "iucn"
+    ],
+    "intermediate_inputs": [
+      "01_grid/Global_10km_grid.gpkg"
+    ],
+    "output_directory": "02_rwr"
+  },
+  {
+    "step": "03",
+    "file": "analysis/03_calculate_species_richness.py",
+    "purpose": "Calculate threatened-species richness for Supplementary Fig. 1",
+    "dependencies": [
+      "01"
+    ],
+    "raw_inputs": [
+      "iucn"
+    ],
+    "intermediate_inputs": [
+      "01_grid/Global_10km_grid.gpkg"
+    ],
+    "output_directory": "03_species_richness"
+  },
+  {
+    "step": "04",
+    "file": "analysis/04_calculate_mine_species_overlap.py",
+    "purpose": "Calculate mine-host and global species overlap",
+    "dependencies": [],
+    "raw_inputs": [
+      "gadm",
+      "iucn",
+      "buffer"
+    ],
+    "intermediate_inputs": [],
+    "output_directory": "04_mine_species_overlap"
+  },
+  {
+    "step": "05",
+    "file": "analysis/05_summarize_rwr_overlap.py",
+    "purpose": "Summarize RWR classes within overlap unions",
+    "dependencies": [
+      "02",
+      "04"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "02_rwr/Global_RWR_10km_grid.gpkg",
+      "04_mine_species_overlap/Country_CopperOverlap_Summary.gpkg"
+    ],
+    "output_directory": "05_rwr_overlap"
+  },
+  {
+    "step": "06",
+    "file": "analysis/06_country_stratified_randomization.py",
+    "purpose": "Run the country-stratified 9,999-iteration location control",
+    "dependencies": [
+      "02"
+    ],
+    "raw_inputs": [
+      "gadm",
+      "buffer"
+    ],
+    "intermediate_inputs": [
+      "02_rwr/Global_RWR_10km_grid.gpkg"
+    ],
+    "output_directory": "06_randomization"
+  },
+  {
+    "step": "07",
+    "file": "analysis/07_screen_priority_species.py",
+    "purpose": "Calculate species exposure and the main priority rule",
+    "dependencies": [
+      "04"
+    ],
+    "raw_inputs": [
+      "iucn"
+    ],
+    "intermediate_inputs": [
+      "04_mine_species_overlap/Species_CopperOverlap_GlobalUnique.csv"
+    ],
+    "output_directory": "07_priority_species"
+  },
+  {
+    "step": "08",
+    "file": "analysis/08_compare_priority_rules.py",
+    "purpose": "Compare priority rules and boundary cases",
+    "dependencies": [
+      "07"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "07_priority_species/Species_PrioritySpecies_Full.csv"
+    ],
+    "output_directory": "08_priority_robustness"
+  },
+  {
+    "step": "09",
+    "file": "analysis/09_priority_boundary_diagnostics.py",
+    "purpose": "Validate the priority decision margin",
+    "dependencies": [
+      "07"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "07_priority_species/Species_PrioritySpecies_Full.csv"
+    ],
+    "output_directory": "09_priority_diagnostics"
+  },
+  {
+    "step": "10",
+    "file": "analysis/10_prepare_mine_ownership.py",
+    "purpose": "Prepare mine identifiers and reported ownership shares",
+    "dependencies": [],
+    "raw_inputs": [
+      "gadm",
+      "buffer",
+      "ownership"
+    ],
+    "intermediate_inputs": [],
+    "output_directory": "10_mine_ownership"
+  },
+  {
+    "step": "11",
+    "file": "analysis/11_calculate_mine_exposure.py",
+    "purpose": "Calculate mine, host-country and global exposure unions",
+    "dependencies": [
+      "04",
+      "10"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "10_mine_ownership/Mine_Master_30km.gpkg",
+      "04_mine_species_overlap/Species_CopperOverlap_GlobalUnique.gpkg"
+    ],
+    "output_directory": "11_mine_exposure"
+  },
+  {
+    "step": "12",
+    "file": "analysis/12_attribute_exposure_by_ownership.py",
+    "purpose": "Attribute country-balanced exposure by reported equity, including HKG",
+    "dependencies": [
+      "10",
+      "11"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "10_mine_ownership/Mine_Master_30km.csv",
+      "10_mine_ownership/Mine_Owner_Share_Ledger.csv",
+      "10_mine_ownership/Mine_Ownership_Coverage.csv",
+      "11_mine_exposure/Mine_Exposure_30km.csv",
+      "11_mine_exposure/Country_Exposure_Union_30km.csv",
+      "11_mine_exposure/Global_Exposure_Union_30km.csv"
+    ],
+    "output_directory": "12_ownership_attribution"
+  },
+  {
+    "step": "13",
+    "file": "analysis/13_link_mines_and_priority_species.py",
+    "purpose": "Build all-mine ecological categories and mine-species links",
+    "dependencies": [
+      "04",
+      "06",
+      "07",
+      "10"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "10_mine_ownership/Mine_Master_30km.gpkg",
+      "06_randomization/Mine_Randomization_Input_QA.csv",
+      "07_priority_species/Species_PrioritySpecies_Priority.csv",
+      "04_mine_species_overlap/Species_CopperOverlap_GlobalUnique.gpkg"
+    ],
+    "output_directory": "13_mine_species_links"
+  },
+  {
+    "step": "14",
+    "file": "analysis/14_summarize_conservation_portfolios.py",
+    "purpose": "Aggregate equity-weighted ecological portfolios, including HKG",
+    "dependencies": [
+      "10",
+      "13"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "13_mine_species_links/Mine_EcologicalAttention_30km.csv",
+      "10_mine_ownership/Mine_Owner_Share_Ledger.csv",
+      "10_mine_ownership/Mine_Ownership_Coverage.csv"
+    ],
+    "output_directory": "14_conservation_portfolios"
+  },
+  {
+    "step": "15",
+    "file": "analysis/15_buffer_distance_sensitivity.py",
+    "purpose": "Recalculate 10/20/30/40/50-km sensitivity",
+    "dependencies": [
+      "04",
+      "07",
+      "10",
+      "11",
+      "12"
+    ],
+    "raw_inputs": [
+      "footprint",
+      "iucn"
+    ],
+    "intermediate_inputs": [
+      "10_mine_ownership/Mine_Master_30km.csv",
+      "10_mine_ownership/Mine_Owner_Share_Ledger.csv",
+      "10_mine_ownership/Mine_Ownership_Coverage.csv",
+      "07_priority_species/Species_PrioritySpecies_Full.csv",
+      "07_priority_species/Species_PrioritySpecies_Priority.csv",
+      "04_mine_species_overlap/Species_CopperOverlap_GlobalUnique.csv",
+      "11_mine_exposure/Mine_Exposure_30km.csv",
+      "11_mine_exposure/Global_Exposure_Union_30km.csv"
+    ],
+    "output_directory": "15_buffer_sensitivity"
+  },
+  {
+    "step": "16",
+    "file": "analysis/16_ownership_completeness_sensitivity.py",
+    "purpose": "Recalculate the 959-mine complete-case ownership sensitivity",
+    "dependencies": [
+      "10",
+      "11",
+      "12"
+    ],
+    "raw_inputs": [],
+    "intermediate_inputs": [
+      "10_mine_ownership/Mine_Master_30km.csv",
+      "10_mine_ownership/Mine_Owner_Share_Ledger.csv",
+      "10_mine_ownership/Mine_Ownership_Coverage.csv",
+      "11_mine_exposure/Mine_Exposure_30km.csv",
+      "11_mine_exposure/Exposure_Union_30km.gpkg",
+      "12_ownership_attribution/Global_Responsibility_Summary.csv",
+      "12_ownership_attribution/Investor_Country_Summary_All.csv",
+      "12_ownership_attribution/Resource_Country_Summary_All.csv",
+      "12_ownership_attribution/Bilateral_Responsibility_Flow_All.csv"
+    ],
+    "output_directory": "16_ownership_sensitivity"
+  }
+]
