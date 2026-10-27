@@ -8,3 +8,5 @@ pyogrio==0.10.0
 pyarrow==19.0.1
 scipy==1.15.2
 openpyxl==3.1.5
+matplotlib==3.10.1
+Pillow==11.1.0

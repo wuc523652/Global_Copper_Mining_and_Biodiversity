@@ -1,0 +1,919 @@
+{
+  "mode": "statistics_from_archived_spatial_checkpoints",
+  "steps_requested": [
+    "spatial",
+    "randomization",
+    "priority",
+    "ownership",
+    "portfolios",
+    "distance",
+    "complete-case"
+  ],
+  "steps_executed": [
+    "spatial",
+    "randomization",
+    "priority",
+    "ownership",
+    "portfolios",
+    "distance",
+    "complete-case"
+  ],
+  "scope": "Recalculates numerical inference, classifications and attribution; spatial checkpoints are inputs except complete-case and buffer-distance diagnostic unions. Plotting uses archived publication tables checked here, not the generated CSV files.",
+  "checks": [
+    {
+      "check": "randomization_Iterations",
+      "status": "PASS",
+      "rows": 9999,
+      "numeric_columns": [
+        "top10_mine_count",
+        "pct_top10_mines",
+        "mean_rwr_percentile"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 4.263256414560601e-14,
+      "atol": 1e-10,
+      "rtol": 1e-10
+    },
+    {
+      "check": "randomization_Summary",
+      "status": "PASS",
+      "rows": 2,
+      "numeric_columns": [
+        "observed",
+        "null_n",
+        "null_mean",
+        "null_sd",
+        "null_median",
+        "null_q025",
+        "null_q975",
+        "observed_minus_null_mean",
+        "enrichment_ratio",
+        "ses",
+        "p_upper_one_sided",
+        "p_lower_one_sided",
+        "p_two_sided"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 1.1546319456101628e-14,
+      "atol": 1e-10,
+      "rtol": 1e-10
+    },
+    {
+      "check": "priority_species_set_10km",
+      "status": "PASS",
+      "species_count": 36
+    },
+    {
+      "check": "priority_species_set_20km",
+      "status": "PASS",
+      "species_count": 106
+    },
+    {
+      "check": "priority_species_set_30km",
+      "status": "PASS",
+      "species_count": 203
+    },
+    {
+      "check": "priority_species_set_40km",
+      "status": "PASS",
+      "species_count": 320
+    },
+    {
+      "check": "priority_species_set_50km",
+      "status": "PASS",
+      "species_count": 446
+    },
+    {
+      "check": "07_priority_species/Species_PrioritySpecies_Full.csv",
+      "status": "PASS",
+      "rows": 5890,
+      "numeric_columns": [
+        "total_habitat_area_km2",
+        "total_overlap_area_km2",
+        "Cal_IAP_raw",
+        "Cal_IAP",
+        "Impact_Percent_raw",
+        "Impact_Percent",
+        "Protection_Target",
+        "Protection_Target_Percent",
+        "Conflict_Target",
+        "Conflict_Target_Percent",
+        "num_countries",
+        "country_occurrences",
+        "Warning_Flag",
+        "country_accumulated_overlap_area_km2",
+        "overlap_duplicate_area_km2"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 2.9802322387695312e-08,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "07_priority_species/Species_PrioritySpecies_Priority.csv",
+      "status": "PASS",
+      "rows": 203,
+      "numeric_columns": [
+        "total_habitat_area_km2",
+        "total_overlap_area_km2",
+        "Cal_IAP_raw",
+        "Cal_IAP",
+        "Impact_Percent_raw",
+        "Impact_Percent",
+        "Protection_Target",
+        "Protection_Target_Percent",
+        "Conflict_Target",
+        "Conflict_Target_Percent",
+        "num_countries",
+        "country_occurrences",
+        "Warning_Flag"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 7.105427357601002e-14,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "08_priority_robustness/Robustness_SpeciesResults.csv",
+      "status": "PASS",
+      "rows": 891,
+      "numeric_columns": [
+        "Range_Area_km2",
+        "Impact_Percent",
+        "Main_SreekarWatson2026_Protection_Target_Percent",
+        "Main_SreekarWatson2026_Conflict_Limit_Percent",
+        "Main_SreekarWatson2026_Exceedance_Margin_pp",
+        "Traditional_RodriguesLewin_Protection_Target_Percent",
+        "Traditional_RodriguesLewin_Conflict_Limit_Percent",
+        "Traditional_RodriguesLewin_Exceedance_Margin_pp"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 7.105427357601002e-14,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "08_priority_robustness/Robustness_ByTaxon.csv",
+      "status": "PASS",
+      "rows": 5,
+      "numeric_columns": [
+        "Copper_Affected_N",
+        "Current_Priority_N",
+        "Current_Priority_Rate_Percent",
+        "Current_Composition_Percent",
+        "Traditional_Priority_N",
+        "Traditional_Priority_Rate_Percent",
+        "Traditional_Composition_Percent",
+        "Stable_Core_N",
+        "Current_Only_N",
+        "Traditional_Only_N",
+        "Group_Jaccard_Percent"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "08_priority_robustness/Robustness_ByCurrentRange.csv",
+      "status": "PASS",
+      "rows": 3,
+      "numeric_columns": [
+        "Copper_Affected_N",
+        "Current_Priority_N",
+        "Current_Priority_Rate_Percent",
+        "Current_Composition_Percent",
+        "Traditional_Priority_N",
+        "Traditional_Priority_Rate_Percent",
+        "Traditional_Composition_Percent",
+        "Stable_Core_N",
+        "Current_Only_N",
+        "Traditional_Only_N",
+        "Group_Jaccard_Percent"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "09_priority_diagnostics/Species_PriorityScreening_Diagnostics_203.csv",
+      "status": "PASS",
+      "rows": 203,
+      "numeric_columns": [
+        "total_habitat_area_km2",
+        "total_overlap_area_km2",
+        "Analysis_Zone_Coverage_Percent",
+        "Range_Outside_Zone_Percent",
+        "Protection_Target_Percent",
+        "Conflict_Target_Percent",
+        "Threshold_Exceedance_pp",
+        "Representation_Margin_pp"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 7.105427357601002e-14,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "12_ownership_attribution/Investor_Country_Summary_All.csv",
+      "status": "PASS",
+      "rows": 78,
+      "numeric_columns": [
+        "total_attributed_area_km2",
+        "domestic_project_attributed_area_km2",
+        "foreign_project_attributed_area_km2",
+        "num_mines",
+        "num_resource_countries",
+        "num_foreign_resource_countries",
+        "foreign_project_share_pct",
+        "foreign_area_rank",
+        "share_of_global_foreign_area_pct",
+        "cumulative_global_foreign_area_pct"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "12_ownership_attribution/Resource_Country_Summary_All.csv",
+      "status": "PASS",
+      "rows": 77,
+      "numeric_columns": [
+        "num_mines",
+        "num_exposed_mines",
+        "mine_exposure_area_sum_km2",
+        "physical_exposure_union_area_km2",
+        "within_country_cross_mine_duplicate_area_km2",
+        "within_country_cross_mine_duplicate_pct_of_union",
+        "attribution_base_area_km2",
+        "raw_sum_of_mine_union_areas_km2",
+        "traceable_area_km2",
+        "domestic_attributed_area_km2",
+        "foreign_attributed_area_km2",
+        "unattributed_area_km2",
+        "num_mines_in_attribution",
+        "num_exposed_mines_in_attribution",
+        "traceable_rate_pct",
+        "foreign_share_of_traceable_pct",
+        "foreign_share_of_total_area_pct",
+        "foreign_area_rank",
+        "share_of_global_foreign_area_pct",
+        "cumulative_global_foreign_area_pct"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 9.094947017729282e-13,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "12_ownership_attribution/Bilateral_Responsibility_Flow_All.csv",
+      "status": "PASS",
+      "rows": 242,
+      "numeric_columns": [
+        "is_domestic",
+        "attributed_exposure_area_km2",
+        "num_mines",
+        "num_owner_records",
+        "equity_share_sum_across_mines_pct"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "12_ownership_attribution/Global_Responsibility_Summary.csv",
+      "status": "PASS",
+      "rows": 1,
+      "numeric_columns": [
+        "global_strict_physical_exposure_area_km2",
+        "resource_country_attributed_physical_area_km2",
+        "raw_sum_of_mine_union_areas_km2_not_used_in_default",
+        "traceable_equity_associated_area_km2",
+        "unattributed_area_km2",
+        "traceable_rate_pct",
+        "domestic_equity_associated_area_km2",
+        "foreign_equity_associated_area_km2",
+        "domestic_share_of_traceable_pct",
+        "foreign_share_of_traceable_pct",
+        "foreign_share_of_total_area_pct",
+        "num_mines",
+        "num_exposed_mines"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "14_conservation_portfolios/Investor_Country_EcologicalPortfolio_Summary_All.csv",
+      "status": "PASS",
+      "rows": 78,
+      "numeric_columns": [
+        "total_traceable_mine_equivalent",
+        "num_unique_mines",
+        "dual_ecological_attention_mine_equivalent",
+        "high_rwr_only_mine_equivalent",
+        "neither_mine_equivalent",
+        "priority_screened_species_only_mine_equivalent",
+        "neither_portfolio_share_percent",
+        "high_rwr_only_portfolio_share_percent",
+        "priority_screened_species_only_portfolio_share_percent",
+        "dual_ecological_attention_portfolio_share_percent",
+        "high_rwr_related_mine_equivalent",
+        "priority_species_related_mine_equivalent",
+        "high_rwr_related_portfolio_share_percent",
+        "priority_species_related_portfolio_share_percent",
+        "ecological_attention_unique_mines",
+        "domestic_traceable_mine_equivalent",
+        "domestic_unique_mines",
+        "domestic_dual_ecological_attention_mine_equivalent",
+        "domestic_dual_unique_mines",
+        "domestic_ecological_attention_unique_mines",
+        "foreign_traceable_mine_equivalent",
+        "foreign_unique_mines",
+        "foreign_dual_ecological_attention_mine_equivalent",
+        "foreign_dual_unique_mines",
+        "foreign_ecological_attention_unique_mines"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "14_conservation_portfolios/Resource_Country_EcologicalPortfolio_Summary_All.csv",
+      "status": "PASS",
+      "rows": 71,
+      "numeric_columns": [
+        "total_traceable_mine_equivalent",
+        "num_unique_mines",
+        "dual_ecological_attention_mine_equivalent",
+        "high_rwr_only_mine_equivalent",
+        "neither_mine_equivalent",
+        "priority_screened_species_only_mine_equivalent",
+        "neither_portfolio_share_percent",
+        "high_rwr_only_portfolio_share_percent",
+        "priority_screened_species_only_portfolio_share_percent",
+        "dual_ecological_attention_portfolio_share_percent",
+        "high_rwr_related_mine_equivalent",
+        "priority_species_related_mine_equivalent",
+        "high_rwr_related_portfolio_share_percent",
+        "priority_species_related_portfolio_share_percent",
+        "ecological_attention_unique_mines",
+        "domestic_traceable_mine_equivalent",
+        "domestic_unique_mines",
+        "domestic_dual_ecological_attention_mine_equivalent",
+        "domestic_dual_unique_mines",
+        "domestic_ecological_attention_unique_mines",
+        "foreign_traceable_mine_equivalent",
+        "foreign_unique_mines",
+        "foreign_dual_ecological_attention_mine_equivalent",
+        "foreign_dual_unique_mines",
+        "foreign_ecological_attention_unique_mines"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "14_conservation_portfolios/Bilateral_EcologicalPortfolio_Summary_All.csv",
+      "status": "PASS",
+      "rows": 242,
+      "numeric_columns": [
+        "total_traceable_mine_equivalent",
+        "num_unique_mines",
+        "ecological_attention_unique_mines",
+        "dual_ecological_attention_mine_equivalent",
+        "high_rwr_only_mine_equivalent",
+        "neither_mine_equivalent",
+        "priority_screened_species_only_mine_equivalent",
+        "dual_portfolio_share_percent"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "14_conservation_portfolios/Global_EcologicalPortfolio_Summary.csv",
+      "status": "PASS",
+      "rows": 5,
+      "numeric_columns": [
+        "mine_count",
+        "mine_share_percent",
+        "traceable_country_resolved_mine_equivalent",
+        "unattributed_mine_equivalent",
+        "traceable_equity_coverage_percent"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "15_buffer_sensitivity/comparison/Table_S_BufferDistance_CoreResults.csv",
+      "status": "PASS",
+      "rows": 5,
+      "numeric_columns": [
+        "affected_species_count",
+        "priority_species_count",
+        "priority_narrow_count",
+        "priority_intermediate_count",
+        "priority_widespread_count",
+        "global_strict_physical_exposure_area_km2",
+        "resource_country_attributed_physical_area_km2",
+        "traceable_equity_associated_area_km2",
+        "unattributed_area_km2",
+        "traceable_rate_pct",
+        "domestic_equity_associated_area_km2",
+        "foreign_equity_associated_area_km2",
+        "domestic_share_of_traceable_pct",
+        "foreign_share_of_traceable_pct",
+        "num_mines",
+        "num_exposed_mines"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 9.313225746154785e-10,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "15_buffer_sensitivity/comparison/Table_S_BufferDistance_SetAndRankStability.csv",
+      "status": "PASS",
+      "rows": 5,
+      "numeric_columns": [
+        "priority_species_shared_with_30km",
+        "priority_species_gained_vs_30km",
+        "priority_species_lost_vs_30km",
+        "priority_set_jaccard_vs_30km",
+        "investor_rank_correlation_vs_30km",
+        "investor_top10_shared_vs_30km",
+        "investor_top10_jaccard_vs_30km",
+        "resource_rank_correlation_vs_30km",
+        "resource_top10_shared_vs_30km",
+        "resource_top10_jaccard_vs_30km",
+        "bilateral_rank_correlation_vs_30km",
+        "bilateral_top10_shared_vs_30km",
+        "bilateral_top10_jaccard_vs_30km"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "16_ownership_sensitivity/comparison/Table_S_OwnershipMissingness_Scenarios.csv",
+      "status": "PASS",
+      "rows": 2,
+      "numeric_columns": [
+        "global_strict_physical_exposure_area_km2",
+        "resource_country_attributed_physical_area_km2",
+        "raw_sum_of_mine_union_areas_km2_not_used_in_default",
+        "traceable_equity_associated_area_km2",
+        "unattributed_area_km2",
+        "traceable_rate_pct",
+        "domestic_equity_associated_area_km2",
+        "foreign_equity_associated_area_km2",
+        "domestic_share_of_traceable_pct",
+        "foreign_share_of_traceable_pct",
+        "foreign_share_of_total_area_pct",
+        "num_mines",
+        "num_exposed_mines",
+        "mine_count_coverage_vs_main_pct",
+        "strict_physical_area_coverage_vs_main_pct",
+        "country_attributed_area_coverage_vs_main_pct"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 2.2737367544322883e-13,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "16_ownership_sensitivity/comparison/OwnershipMissingness_InvestorRankComparison_All.csv",
+      "status": "PASS",
+      "rows": 78,
+      "numeric_columns": [
+        "main_foreign_area_km2",
+        "complete_case_foreign_area_km2",
+        "main_rank",
+        "complete_case_rank"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "16_ownership_sensitivity/comparison/OwnershipMissingness_BilateralRankComparison_All.csv",
+      "status": "PASS",
+      "rows": 183,
+      "numeric_columns": [
+        "main_foreign_area_km2",
+        "complete_case_foreign_area_km2",
+        "main_rank",
+        "complete_case_rank"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_3/Country_Spatial",
+      "status": "PASS",
+      "rows": 77,
+      "numeric_columns": [
+        "Mine count",
+        "Exposed species count",
+        "Influence area in non-zero RWR cells (km²)",
+        "Classified influence area in top-10% RWR cells (%)",
+        "Classified influence area in top-1% RWR cells (%)",
+        "Unioned exposed range area (km²)",
+        "Rwr 0 50 area (km²)",
+        "Rwr 50 75 area (km²)",
+        "Rwr 75 90 area (km²)",
+        "Rwr 90 99 area (km²)",
+        "Rwr 99 100 area (km²)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 4.0745362639427185e-10,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_3/Global_Spatial",
+      "status": "PASS",
+      "rows": 1,
+      "numeric_columns": [
+        "Mine count",
+        "Exposed species count",
+        "Influence area in non-zero RWR cells (km²)",
+        "Classified influence area in top-10% RWR cells (%)",
+        "Classified influence area in top-1% RWR cells (%)",
+        "Global union exposed range area (km²)",
+        "Input species count",
+        "Mine host country count",
+        "Top10 influence area (km²)",
+        "Top1 influence area (km²)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_3/Randomization_Iterations",
+      "status": "PASS",
+      "rows": 9999,
+      "numeric_columns": [
+        "Top10 mine count",
+        "Reference points in top-10% RWR cells (%)",
+        "Mean global RWR percentile"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 4.263256414560601e-14,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_4/Exposed_Species",
+      "status": "PASS",
+      "rows": 891,
+      "numeric_columns": [
+        "Mapped global range area (km²)",
+        "Unioned overlap area (km²)",
+        "Overlapping range (%)",
+        "Representation target (%)",
+        "Main-rule overlap threshold (%)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 5.960464477539063e-08,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_4/Exposed_Species/Main-rule priority species",
+      "status": "PASS",
+      "comparison": "exact labels"
+    },
+    {
+      "check": "Supplementary_Data_4/Priority_Species",
+      "status": "PASS",
+      "rows": 203,
+      "numeric_columns": [
+        "Mapped global range area (km²)",
+        "Unioned overlap area (km²)",
+        "Overlapping range (%)",
+        "Representation target (%)",
+        "Main-rule overlap threshold (%)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 4.547473508864641e-13,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_4/Priority_Species/Main-rule priority species",
+      "status": "PASS",
+      "comparison": "exact labels"
+    },
+    {
+      "check": "Supplementary_Data_4/Rule_Comparison",
+      "status": "PASS",
+      "rows": 891,
+      "numeric_columns": [
+        "Mapped global range area (km²)",
+        "Overlapping range (%)",
+        "Main-rule overlap threshold (%)",
+        "Alternative-rule overlap threshold (%)",
+        "Margin above main threshold (percentage points)",
+        "Margin above alternative threshold (percentage points)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 5.960464477539063e-08,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_4/Rule_Comparison/Main-rule priority species",
+      "status": "PASS",
+      "comparison": "exact labels"
+    },
+    {
+      "check": "Supplementary_Data_4/Rule_Comparison/Alternative-rule priority species",
+      "status": "PASS",
+      "comparison": "exact labels"
+    },
+    {
+      "check": "Supplementary_Data_6/Owner_Countries",
+      "status": "PASS",
+      "rows": 78,
+      "numeric_columns": [
+        "Total attributed area (km²)",
+        "Domestic attributed area (km²)",
+        "Cross border attributed area (km²)",
+        "Cross border share (%)",
+        "Num mines",
+        "Num mine host countries",
+        "Num cross border mine host countries",
+        "Cross border area rank",
+        "Share of global cross border area (%)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 1.4551915228366852e-11,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_6/Mine_Host_Countries",
+      "status": "PASS",
+      "rows": 77,
+      "numeric_columns": [
+        "Num mines",
+        "Num exposed mines",
+        "Physical exposure union area (km²)",
+        "Traceable area (km²)",
+        "Unattributed area (km²)",
+        "Domestic attributed area (km²)",
+        "Cross border attributed area (km²)",
+        "Traceable rate (%)",
+        "Cross border share of traceable (%)",
+        "Cross border area rank"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 1.4551915228366852e-11,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_6/Global_Attribution",
+      "status": "PASS",
+      "rows": 1,
+      "numeric_columns": [
+        "Num mines",
+        "Global strict physical exposure area (km²)",
+        "Mine host country attributed physical area (km²)",
+        "Traceable equity associated area (km²)",
+        "Unattributed area (km²)",
+        "Traceable rate (%)",
+        "Domestic equity associated area (km²)",
+        "Cross border equity associated area (km²)",
+        "Domestic share of traceable (%)",
+        "Cross border share of traceable (%)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_7/CrossBorder_Flows",
+      "status": "PASS",
+      "rows": 183,
+      "numeric_columns": [
+        "Attributed exposure area (km²)",
+        "Num mines",
+        "Num owner records",
+        "Equity share sum across mines (%)",
+        "Share of global cross border area (%)",
+        "Cross border area rank"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 1.8189894035458565e-12,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_6/CompleteCase_Owners",
+      "status": "PASS",
+      "rows": 75,
+      "numeric_columns": [
+        "Total attributed area (km²)",
+        "Domestic attributed area (km²)",
+        "Cross border attributed area (km²)",
+        "Cross border share (%)",
+        "Num mines",
+        "Num mine host countries",
+        "Num cross border mine host countries",
+        "Cross border area rank",
+        "Share of global cross border area (%)"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 2.9103830456733704e-11,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_6/CompleteCase_Hosts",
+      "status": "PASS",
+      "rows": 71,
+      "numeric_columns": [
+        "Num mines",
+        "Num exposed mines",
+        "Physical exposure union area (km²)",
+        "Traceable area (km²)",
+        "Unattributed area (km²)",
+        "Domestic attributed area (km²)",
+        "Cross border attributed area (km²)",
+        "Traceable rate (%)",
+        "Cross border share of traceable (%)",
+        "Cross border area rank"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 2.9103830456733704e-11,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_7/CompleteCase_Flows",
+      "status": "PASS",
+      "rows": 178,
+      "numeric_columns": [
+        "Attributed exposure area (km²)",
+        "Num mines",
+        "Num owner records",
+        "Equity share sum across mines (%)",
+        "Share of global cross border area (%)",
+        "Cross border area rank"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 1.8189894035458565e-12,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_6/Completeness_Stability",
+      "status": "PASS",
+      "rows": 1,
+      "numeric_columns": [
+        "Complete case mines",
+        "Complete case mine share (%)",
+        "Complete case strict physical area coverage (%)",
+        "Owner registration country or region rank correlation",
+        "Owner registration country or region top10 shared",
+        "Owner registration country or region top10 jaccard",
+        "Bilateral rank correlation",
+        "Bilateral top10 shared",
+        "Bilateral top10 jaccard"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 5.551115123125783e-16,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_5/Mine_Summary",
+      "status": "PASS",
+      "rows": 224,
+      "numeric_columns": [
+        "Priority species count"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_5/Species_Summary",
+      "status": "PASS",
+      "rows": 203,
+      "numeric_columns": [
+        "Associated mine count",
+        "Mine host country count"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_5/Country_Summary",
+      "status": "PASS",
+      "rows": 30,
+      "numeric_columns": [
+        "Associated mine count",
+        "Priority species count",
+        "Mine species association count",
+        "Maximum priority species per mine",
+        "Associations per mine"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 2.220446049250313e-16,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_8/Mine_Priority_Categories",
+      "status": "PASS",
+      "rows": 1278,
+      "numeric_columns": [
+        "Priority species count",
+        "Regional priority",
+        "Species priority"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_8/Owner_Portfolios",
+      "status": "PASS",
+      "rows": 78,
+      "numeric_columns": [
+        "Num unique mines",
+        "Total traceable mine equivalent",
+        "Conservation priority unique mines",
+        "Mine equivalents meeting either priority criterion",
+        "Portfolio meeting either priority criterion (%)",
+        "High rwr only mine equivalent",
+        "High rwr only portfolio share (%)",
+        "Priority species only mine equivalent",
+        "Priority species only portfolio share (%)",
+        "Dual conservation priority mine equivalent",
+        "Dual conservation priority portfolio share (%)",
+        "Neither mine equivalent",
+        "Neither portfolio share (%)",
+        "Domestic unique mines",
+        "Domestic conservation priority unique mines",
+        "Domestic traceable mine equivalent",
+        "Cross border unique mines",
+        "Cross border conservation priority unique mines",
+        "Cross border traceable mine equivalent"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 1.4210854715202004e-14,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    },
+    {
+      "check": "Supplementary_Data_9/Distance_Diagnostics",
+      "status": "PASS",
+      "rows": 4,
+      "numeric_columns": [
+        "End distance (km)",
+        "Priority species start",
+        "Priority species end",
+        "Affected species start",
+        "Affected species end",
+        "Full buffer union area start (km²)",
+        "Full buffer union area end (km²)",
+        "Additional priority species",
+        "Additional full buffer union area (km²)",
+        "Additional priority species per 100000 (km²)",
+        "Priority species share start (%)",
+        "Priority species share end (%)",
+        "Priority species share change percentage points"
+      ],
+      "mismatching_columns": [],
+      "max_absolute_difference": 4.97838482260704e-06,
+      "atol": 1e-07,
+      "rtol": 1e-10
+    }
+  ],
+  "status": "PASS"
+}

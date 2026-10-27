@@ -19,14 +19,14 @@ Only explicitly reported ownership shares that can be resolved to an investor
 country are attributed. Missing, unreported or country-unresolved shares are
 not redistributed. Consequently, portfolio shares describe the traceable
 country-resolved portion of each investor portfolio, while the global table
-also reports unattributed equity. All country-resolved records, including HKG,
-enter the calculations and global totals; HKG is omitted only from the
-separately generated named-country display selection.
+also reports unattributed equity. All resolved countries and regions enter
+the calculations, global totals and named display tables.
 
 The input tables from steps 10 and 13 are read without modification.
 """
 
 from _paths import project_path as _nc_project, data_path as _nc_data, analysis_script as _nc_script
+from _ownership_labels import normalize_registration_names
 
 from pathlib import Path
 import warnings
@@ -76,7 +76,7 @@ MIN_PORTFOLIO_MINES_FIG5A = 10
 N_FIG5A_INVESTORS = 12
 N_FIG5B_INVESTORS = 8
 N_FIG5B_RESOURCES = 10
-DISPLAY_OMITTED_ISO3 = {"HKG"}
+DISPLAY_OMITTED_ISO3 = set()
 
 CATEGORY_ORDER = [
     "Neither",
@@ -278,7 +278,7 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     bridge = pd.read_csv(MINE_BRIDGE, low_memory=False)
-    owners = pd.read_csv(OWNER_LEDGER, low_memory=False)
+    owners = normalize_registration_names(pd.read_csv(OWNER_LEDGER, low_memory=False))
     coverage = pd.read_csv(OWNERSHIP_COVERAGE, low_memory=False)
 
     bridge["property_id"] = normalise_id(bridge["property_id"])
@@ -373,7 +373,7 @@ def main() -> None:
         | country_ledger["resource_iso3"].isin(DISPLAY_OMITTED_ISO3)
     ].copy()
     display_omitted_country_ledger["display_rule"] = (
-        "included in calculations and global totals; omitted only from named-country displays"
+        "all countries and regions retained in calculations and named displays"
     )
 
     investor = portfolio_summary(
@@ -843,22 +843,25 @@ def main() -> None:
                 "Top resource countries by displayed cross-border ecological-attention mine count.",
             ),
             qa_row(
-                "hkg_included_in_calculations",
+                "registration_codes_retained_in_calculations",
                 pass_fail(
-                    country_ledger["investor_iso3"].isin(DISPLAY_OMITTED_ISO3).any()
-                    and investor["investor_iso3"].isin(DISPLAY_OMITTED_ISO3).any()
-                    and bilateral["investor_iso3"].isin(DISPLAY_OMITTED_ISO3).any()
+                    set(country_ledger["investor_iso3"]) == set(investor["investor_iso3"])
+                    == set(bilateral["investor_iso3"])
                 ),
-                int(country_ledger["investor_iso3"].isin(DISPLAY_OMITTED_ISO3).sum()),
-                ">0",
-                "HKG records must enter the analytical ledger and aggregate totals.",
+                country_ledger["investor_iso3"].nunique(),
+                investor["investor_iso3"].nunique(),
+                "All resolved registration codes must enter aggregate totals.",
             ),
             qa_row(
-                "hkg_omitted_from_named_display_selection",
-                pass_fail(not selection["country_iso3"].isin(DISPLAY_OMITTED_ISO3).any()),
-                int(selection["country_iso3"].isin(DISPLAY_OMITTED_ISO3).sum()),
+                "no_registration_codes_omitted_from_named_displays",
+                pass_fail(
+                    len(investor_display) == len(investor)
+                    and len(resource_display) == len(resource)
+                    and len(bilateral_display) == len(bilateral)
+                ),
+                len(display_omitted_country_ledger),
                 0,
-                "HKG must be absent only from the named-country display selection.",
+                "Named display tables retain all countries and regions before panel selection.",
             ),
             qa_row(
                 "traceable_country_equity",
@@ -872,7 +875,7 @@ def main() -> None:
                 "INFO",
                 display_omitted_total,
                 EXPECTED_MINES,
-                "Included in calculations; omitted only from named-country display outputs.",
+                "No resolved registration is omitted from named display tables.",
             ),
             qa_row(
                 "unattributed_equity",

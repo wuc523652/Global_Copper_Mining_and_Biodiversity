@@ -1,180 +1,138 @@
 # Global Copper Mining and Biodiversity
 
-Research code for **Identifying conservation priorities to protect threatened vertebrates from global copper mining**.
+Code for **Global conservation priorities for vertebrates threatened by copper mining**.
 
-The 16 ordered scripts cover spatial exposure, conservation-priority screening, ownership attribution and sensitivity analyses. The study uses 1,278 copper mines and a frozen cohort of 5,890 threatened vertebrate species. The primary 30-km analysis identifies 891 exposed species and 203 priority species.
+This package reproduces the 7 main figures and 9 supplementary figures and recomputes the scientific analyses using the complete research dataset in `data/`. It includes both a shorter reanalysis from archived intermediate data and a 17-stage workflow starting from the frozen original spatial and ownership inputs. No submission-materials `Figure` or `Table` directory is needed.
 
-This script-based repository includes small runnable examples. Full study data are distributed separately. Figure styling, manuscript production and historical alternative scripts are outside its scope.
+## Start here
 
-## Installation and quick start
-
-Use 64-bit Python 3.13.3, the version used for repository validation. No GPU is needed. From the repository root:
+Use 64-bit Python 3.13.3 and the versions in `requirements.txt`. No GPU is needed. Create an environment, activate it, and install the dependencies:
 
 ```text
 python -m venv .venv
-```
-
-Activate with `.venv\Scripts\activate` in Windows Command Prompt, `.venv/Scripts/Activate.ps1` in PowerShell, or `source .venv/bin/activate` on Linux/macOS. Then:
-
-```text
 python -m pip install -r requirements.txt
-python demo/run_demo.py --output ../copper_demo/numerical
-python demo/run_spatial_demo.py --output ../copper_demo/spatial
+```
+
+Activation: `.venv\Scripts\Activate.ps1` in PowerShell, `.venv\Scripts\activate` in Windows Command Prompt, or `source .venv/bin/activate` on Linux/macOS. Run the installation command after activation. For Conda environments, activate the environment before running commands so that GDAL/PROJ can find their matching resource files.
+
+In the combined local package, `data/` already contains a complete copy of the original companion dataset, including raw inputs, checkpoints, plotting assets and final tables. Default input paths are resolved relative to the installed code, not the terminal's current directory. To use a separately stored dataset, pass `--data-root /path/to/copper-data`. Quote paths containing spaces.
+
+For GitHub distribution, code belongs in the repository and the complete data archives belong in the matching Release assets. Extract all data assets into the code package's `data/` directory, so that `data/deposit_manifest.json` and `data/10Raw_Inputs/` exist. Ordinary Git and GitHub's automatic source-code ZIP do not include this ignored data directory. This local reorganization does not publish a Release or certify third-party redistribution rights. Keep generated results outside the code package and its data.
+
+```text
+python reproduce.py --mode check
+python reproduce.py --output-root ../copper-results --mode all
+```
+
+The first command verifies every deposited file against `deposit_manifest.json`. The second independently recomputes statistics and redraws all 16 figures. `all` uses archived intermediate spatial data; it does not repeat every global polygon operation. Recomputed numerical outputs and comparison reports are written under `calculations/`; the figures under `figures/` read the archived final Excel tables and plotting assets. They do not silently replace the submitted tables with newly computed values.
+
+| Mode | Work performed |
+| --- | --- |
+| `check` | Verify deposited file names, sizes and SHA-256 hashes; no scientific calculation |
+| `calculations` | Recompute statistics from archived intermediate inputs and compare with archived references; see `reproduction/README.md` for exact coverage |
+| `figures` | Render 7 main and 9 supplementary figures from the dataset alone |
+| `all` | Run `calculations`, then `figures` |
+| `raw` | Run all 17 spatial/statistical analysis stages from `10Raw_Inputs`; substantially more time and memory required |
+
+For full spatial reanalysis:
+
+```text
+python reproduce.py --output-root ../copper-raw-results --mode raw
+```
+
+The `raw` route uses real inputs in `data/10Raw_Inputs`. It executes the spatial/statistical stages; it does not automatically rebuild the formatted supplementary workbooks or redraw figures from newly computed tables. Figure rendering continues to read archived final tables until an explicit, validated table-export step replaces them. The complete 17-stage route has not been validated end to end; see the validation section.
+
+Use a fresh output directory when changing inputs, software versions or parameters. The original scientific scripts can replace their own generated outputs and some retain intermediate caches. The runner never requires writing into the dataset.
+
+## Figures
+
+```text
+python plotting/render_all.py --output-root ../copper-figures --figures all
+python plotting/render_all.py --output-root ../copper-figures-vector --figures 2 S9 --formats png pdf svg
+```
+
+`--figures` accepts `all`, `main`, `supplementary`, or individual identifiers such as `1 S2`. Arial, Microsoft YaHei, Times New Roman and DejaVu Sans are used by the original figures. Fonts are not redistributed. A different font or rendering library can alter layout and pixels without changing the underlying data. See `plotting/README.md` and `plotting/VALIDATION.md`.
+
+## Files and data contracts
+
+```text
+data/                     Complete real dataset, including 10Raw_Inputs; release assets
+reproduce.py              One entry point, defaulting to this package's data/
+requirements.txt          Pinned numerical, spatial, Excel and plotting libraries
+analysis_manifest.json    Ordered scientific steps and explicit prerequisites
+run_analysis.py           Run/check selected original-data stages
+analysis/01_*.py ... 17_*  Spatial and statistical analyses
+reproduction/             Independent reanalysis from deposited intermediates
+plotting/main/            Main figures 1-7 and reusable plotting modules
+plotting/supplementary/   Supplementary figures 1-9
+plotting/render_all.py     Unified plotting entry point
+validation/               Reports from the local validation run
+tools/data_manifest.py    Dataset integrity checker and maintainer inventory builder
+tools/package_raw_inputs.py  Maintainer-only copying/fingerprinting of frozen raw files
+```
+
+The `data/` directory contains original-layout raw inputs in `10Raw_Inputs`, reusable checkpoints in `11Reanalysis_Checkpoints`, all original plotting assets in `9Figure_Inputs`, and the nine unmodified final supplementary workbooks in `8Final_Results`. All data files, the data README and its manifest are preserved byte for byte from the original local Zenodo package. Its README retains the historical deposit description; the current local layout and intended GitHub download arrangement are documented here. The legacy grid split folders are retained for compatibility; the workflow uses `3Grid_and_Biodiversity`.
+
+Identifiers must be joined by `mine_id`/`property_id`, `species_id` and `grid_id`, not by row number. Preserve the background `grid_order` and country ordering for exact seeded randomization. Some reference files are explicitly retained only for validation; recomputation does not treat those expected answers as its calculation inputs. See the checkpoint manifest and reanalysis documentation for provenance.
+
+## Full analysis order
+
+| Step | Calculation |
+| --- | --- |
+| 01 | Global 10-km equal-area land grid |
+| 02 | Area-weighted rarity-weighted richness (RWR) |
+| 03 | Threatened-species richness |
+| 04 | Mine-host and globally deduplicated species overlap |
+| 05 | Country/global RWR classes within exposure unions |
+| 06 | Country-stratified mine-location randomization, 9,999 iterations |
+| 07 | Species exposure and the primary priority rule |
+| 08 | Alternative priority rules and boundary cases |
+| 09 | Screening margins and boundary diagnostics |
+| 10 | Stable mine identifiers, reported ownership ledger and coverage |
+| 11 | Mine, host-country and global exposure unions |
+| 12 | Ownership attribution with country-overlap balancing, including HKG |
+| 13 | Mine-priority-species associations and ecological categories |
+| 14 | Equity-weighted ecological portfolios |
+| 15 | 10/20/30/40/50-km buffer-distance sensitivity |
+| 16 | Complete-case ownership sensitivity, 959 mines |
+| 17 | Priority-species grid associations, counts and dominant taxon |
+
+List prerequisites or resume selected stages:
+
+```text
 python run_analysis.py --list
+python run_analysis.py --check --work-root ../copper-raw-results/raw_analysis
+python run_analysis.py --steps 08 09 --work-root ../copper-raw-results/raw_analysis
 ```
 
-Both demos write a JSON summary with `"status": "PASS"` and run without network access after installation. Keep outputs in separate folders as shown above.
+The runner defaults to `data/` and also accepts an explicit complete dataset or `10Raw_Inputs` folder. Dependencies must already exist when resuming; they are not run implicitly. `--capped-check --steps 08` additionally runs the historical 1,000,000-km2 cap sensitivity. `--prepare-buffer` can rebuild the primary 30-km buffer from the footprints; the frozen primary buffer is supplied for matching the submitted analysis.
 
-**Tested environment:** Windows 10 build 19045, 64-bit Python 3.13.3. A fresh virtual environment was installed from `requirements.txt`; dependency consistency, both demos and Excel read/write were verified. Each demo completed in approximately two seconds including interpreter startup. Allow about 5–15 minutes for installation depending on connectivity; this is a planning estimate, not a benchmark. Linux/macOS and full-global-run resource requirements have not been validated. Global polygon operations need substantially more memory, disk space and time than the examples.
+## Scientific conventions and expected study totals
 
-## Repository contents
+The frozen cohort contains 1,278 mines and 5,890 threatened vertebrates. The primary 30-km analysis exposes 891 species and selects 203 priority species. The alternative rule selects 247 species, with 202 shared. The base grid has 1,404,410 cells; priority-species mapping retains 1,404,063 valid WGS84 cells, 4,771 nonzero cells and 7,783 unique grid-species pairs. The 347 excluded cells must not be filled with zero.
 
-```text
-README.md                   Purpose, installation, data and execution instructions
-LICENSE                     MIT license for the code
-requirements.txt            Pinned Python dependencies
-.gitignore                  Excludes environments, inputs, outputs and caches
-run_analysis.py             List, check, prepare or execute analysis stages
-analysis_manifest.json      Ordered stages, dependencies and paths
-analysis/
-  _paths.py                 Configurable input and output paths
-  01_*.py ... 16_*.py        Scientific analysis scripts
-demo/
-  run_demo.py               Derived-species and synthetic numerical checks
-  run_spatial_demo.py       Small synthetic spatial example
-  data/
-    exposed_species.csv
-    expected_priority_ids.csv
-```
+RWR is the sum of within-cell species range area divided by each species' full global range area. Exposure is potential spatial exposure, not observed habitat loss. Randomization uses seed 20260728, 9,999 iterations and within-country sampling with replacement across 77 mine-host countries. Unknown ownership remains unattributed; reported shares are not rescaled to 100%. Complete-case results are a sensitivity analysis, not imputation. Primary and sensitivity 30-km geometry results are kept distinct.
 
-## Analysis order
+## Validation and limits
 
-Run stages through `run_analysis.py`. Independent stages need not run serially. `analysis_manifest.json` records exact prerequisites. All output folders are relative to `--work-root`.
+Local validation for the 2026-10-18 update uses Windows and Python 3.13.3 with the pinned scientific-library versions. It uses an isolated environment inheriting installed geospatial libraries; this update does not claim a newly downloaded clean installation or verification on Linux/macOS. See `validation/README.md` for the actual completed runs and any remaining limitations. A hash check or successful small demo is not a full-study scientific validation.
 
-| Stage | Analysis | Output folder | Related material |
-| --- | --- | --- | --- |
-| 01 | Build the global 10-km equal-area land grid | `01_grid` | Spatial framework |
-| 02 | Calculate area-based rarity-weighted richness (RWR) | `02_rwr` | Biodiversity and exposure analyses |
-| 03 | Calculate threatened-species richness | `03_species_richness` | Supplementary Fig. 1 |
-| 04 | Calculate mine-host and globally deduplicated species overlap | `04_mine_species_overlap` | Supplementary Data 3 |
-| 05 | Summarize RWR classes within overlap unions | `05_rwr_overlap` | Supplementary Data 3 |
-| 06 | Run country-stratified mine-location randomization | `06_randomization` | Supplementary Data 3 |
-| 07 | Calculate species exposure and screen priority species | `07_priority_species` | Supplementary Data 2 and 4 |
-| 08 | Compare primary and alternative screening rules | `08_priority_robustness` | Supplementary Data 4 |
-| 09 | Calculate screening margins and boundary diagnostics | `09_priority_diagnostics` | Supplementary Data 4 |
-| 10 | Prepare mine identifiers, ownership ledger and coverage | `10_mine_ownership` | Attribution inputs |
-| 11 | Calculate mine, host-country and global exposure unions | `11_mine_exposure` | Exposure and attribution analyses |
-| 12 | Attribute balanced exposure by reported ownership | `12_ownership_attribution` | Supplementary Data 6 and 7 |
-| 13 | Link mines, priority species and ecological categories | `13_mine_species_links` | Supplementary Data 5 and 8 |
-| 14 | Summarize ownership-linked conservation portfolios | `14_conservation_portfolios` | Supplementary Data 8 |
-| 15 | Repeat analyses at 10/20/30/40/50-km buffer distances | `15_buffer_sensitivity` | Supplementary Data 9 |
-| 16 | Run complete-case ownership sensitivity | `16_ownership_sensitivity` | Supplementary Data 6 and 7 |
+All 16 PNG figures were executed. All dimensions match existing figures; 12 PNGs match pixel for pixel. For figures 6, 7, S4 and S5, re-running the unmodified original plotting sources in the same environment produces exactly the new package output; the differences from archived PNGs therefore predate this migration. Their historical cause is not established. PDF/SVG export was exercised for figures 2 and S9. No scientific values, thresholds or selection rules were changed to improve a comparison.
 
-The numerical methods and study parameters are retained; output directories are standardized. Some output filenames retain historical figure or table numbers. The mapping above gives the current supplementary numbering.
+## Access, licensing and citation
 
-## Study data and input layout
+Local layout update: 2026-10-27. The complete dataset was copied into `data/`, entry points were configured to use it by default, and the optional examples were subsequently removed from this distribution. The manuscript title and funding retain the 2026-10-20 metadata. The full statistical and figure validation above remains the 2026-10-18 run; see `validation/local_data_layout_20261027.md` for the narrower checks of this path update. No remote repository, Release or Zenodo record was updated by this local operation.
 
-The companion dataset is **Global Copper Mining and Biodiversity**, being deposited in Zenodo. Its DOI will be linked here once the record is available.
+Code repository: [https://github.com/wuc523652/Global_Copper_Mining_and_Biodiversity](https://github.com/wuc523652/Global_Copper_Mining_and_Biodiversity). The intended data download location is the corresponding [GitHub Release](https://github.com/wuc523652/Global_Copper_Mining_and_Biodiversity/releases); upload/publication of these updated local files remains pending. The manuscript also records the **reserved, unpublished Zenodo DOI [10.5281/zenodo.23277107](https://doi.org/10.5281/zenodo.23277107)**. That identifier does not establish public data availability and is not required to run this local package. No new DOI, release tag or publication status is asserted here.
 
-That package contains mine footprints, the species inventory, grid biodiversity values, buffers, exposure tables, randomization inputs/results, derived ownership attribution and Supplementary Data 1–9. These support inspection and reuse of the results. They do not replace all raw inputs needed to reconstruct the complete spatial workflow.
+The manuscript author list and final author-based citations will be added after author confirmation. Do not infer authors or a publication year from this local package date.
 
-For full reanalysis, obtain study-matched inputs from the original providers. Arrange them under one directory supplied as `--data-root`:
+The code uses the existing MIT license. That license does not cover third-party data, maps, flags, icons or fonts. The local raw-input copy includes IUCN range geometries, GADM boundaries and S&P ownership records under their original conditions; inclusion for local reproduction is not certification that they may be publicly redistributed. The same consideration applies to derived data. See the dataset README and `10Raw_Inputs/README.md` before choosing public, restricted-access or provider-obtained distribution. Removing restricted files changes the self-contained reproduction claim and requires an updated manifest and access instructions.
 
-| Relative path | Required content |
-| --- | --- |
-| `Global_GADM/GC_GADM.shp` | Country boundaries with `NAME_0` and `GID_0`; the study input contains 256 features. |
-| `Global_Copper_Mine/Global_Copper_Mine/Global_Copper_Mine-allinfo.shp` | The 1,278 footprints with `Property_I`, `Property_N`, `Country` and geometry. |
-| `Global_Copper_Mine/Global_Copper_Mine/Buffer-30km/Global_Copper_Mine-30km.shp` | Matching 30-km zones, identifiers and metadata; alternatively generate using `--prepare-buffer`. |
-| `IUCNredlist/202502/{taxon}-{status}/data_0.shp` | Fifteen frozen range layers with `ID_NO` and `SCI_NAME`. Taxa: `Amphibians`, `Birds`, `Fish`, `Mammals`, `Reptiles`; statuses: `CR`, `EN`, `VU`. |
-| `Global_Copper_Mine/Excel/Global_Copper_Mine-regionrenew.xlsx` | First sheet: `FID`, `Property_I`, `Property_N`, `Country`, `List_of_Ow`. |
-| `Global_Copper_Mine/Excel/Copper_mine_all_info.xlsx` | `Sheet1`: `PROP_ID`, `OWNER_LIST`, from the primary ownership snapshot. |
-| `Global_Copper_Mine/Excel/Copper_mine_ownerlist-countryrenew.xlsx` | `Sheet1`: `OWNER_NAME`, `OWNER_COUNTRY`. |
+Please cite the manuscript, the exact code release and dataset version, together with the original data sources. The February 2025 IUCN snapshot is known; historical GADM release and ownership-snapshot acquisition dates have not been inferred from file timestamps. File hashes identify the exact bytes used.
 
-Each shapefile needs its `.shp`, `.shx`, `.dbf` and `.prj` files; retain `.cpg` if supplied. Keep identifiers, crosswalks and relevant input ordering consistent. A current provider download may differ from the frozen cohort. The code does not infer historical threat classifications from current online records.
+## Study funding
 
-Sources and access:
-
-- Mine footprints: Li et al. (2025), *Machine learning-enhanced monitoring of global copper mining areas*, [dataset version 1](https://doi.org/10.6084/m9.figshare.28680863.v1), with the study selection and stable identifiers.
-- Species ranges: [IUCN Red List](https://www.iucnredlist.org/resources/spatial-data-download), February 2025 local snapshot. The cohort contains mining-and-quarrying-threat-listed CR/EN/VU vertebrates.
-- Country boundaries: [GADM](https://gadm.org/data.html).
-- Ownership: [S&P Global Market Intelligence](https://www.spglobal.com/marketintelligence/), with the study's owner-country crosswalk.
-
-Original IUCN/GADM geometries and commercial ownership records are not bundled; obtain them under provider conditions. The exact historical GADM release, ownership-snapshot date and original acquisition dates have not been established in this repository. Dates are not inferred from file timestamps. A blank primary-snapshot owner list is not replaced with an older snapshot.
-
-## Examples and expected results
-
-### Numerical example
-
-`demo/run_demo.py` calls selected production functions from stages 06, 07, 08 and 12.
-
-| Result | Expected |
-| --- | --- |
-| Exposed / primary-priority species | 891 / 203 |
-| Alternative-priority / shared species | 247 / 202 |
-| Synthetic host-country union | 150 km² |
-| Synthetic attributed / unattributed area | 120 / 30 km² |
-
-It also checks threshold equality, agreement between two primary-rule implementations, HKG retention, unknown equity, country balancing, seeded sampling and the empirical probability correction.
-
-`exposed_species.csv` contains actual derived results for 891 species: `species_id`, `scientific_name`, `taxon`, `status`, `total_habitat_area_km2`, `total_overlap_area_km2`, `Impact_Percent` and `Is_Copper_Affected`. Areas are km²; exposure percentage is on a 0–100 scale. Full available precision is retained. `expected_priority_ids.csv` contains the 203 expected identifiers. These correspond to Supplementary Data 4 and contain no range geometries. Ownership and randomization examples use fictitious inputs generated in memory.
-
-### Spatial example
-
-`demo/run_spatial_demo.py` generates synthetic polygons and calls production functions from stages 15, 04 and 02; external spatial files are unnecessary.
-
-| Result | Expected |
-| --- | --- |
-| A 1-km-square footprint with a 1-km buffer | Approximately 8.13654849 km² |
-| Sum of two overlapping zones / deduplicated union | 8 / 6 km² |
-| Separate overlap areas for two species | 4 and 4 km² |
-| RWR values for three cells | 0.5, 5/6 and 1/3 |
-
-One species extends outside the grid, checking use of its full range as the denominator. The example writes two CSVs and a JSON summary; temporary files are removed. These are fictitious geometries, not study observations.
-
-## Running the study workflow
-
-Use separate input and output directories. Replace example paths with your own:
-
-```text
-python run_analysis.py --check --data-root ../study_inputs --work-root ../study_results
-```
-
-This checks files, shapefile sidecars and intermediate prerequisites, not geometry quality, cohort membership or numerical correctness. Files produced by earlier selected stages are checked again before each dependent stage runs.
-
-If the precomputed primary buffer is unavailable:
-
-```text
-python run_analysis.py --prepare-buffer --data-root ../study_inputs --work-root ../study_results
-```
-
-Preparation uses the study's per-feature local azimuthal-equidistant buffer function. It writes `prepared_inputs/primary_buffer.gpkg` under the output root, which then takes precedence over the raw buffer shapefile. An existing prepared buffer is not overwritten.
-
-Run all stages or resume selected stages:
-
-```text
-python run_analysis.py --all --data-root ../study_inputs --work-root ../study_results
-python run_analysis.py --steps 08 09 --data-root ../study_inputs --work-root ../study_results
-```
-
-Resuming 08/09 requires `07_priority_species/Species_PrioritySpecies_Full.csv` in the output directory. Missing dependencies are not executed automatically. The optional `--capped-check --steps 08` runs the additional 1,000,000-km² target-area cap check; the default comparison is uncapped.
-
-Use a fresh output folder after changing inputs or parameters: selected stages can replace outputs, and inherited caches do not all check input content. Direct script execution can use `NC_DATA_ROOT` and `NC_WORK_ROOT`, but the runner provides the documented preflight checks.
-
-## Validation and scientific conventions
-
-Checks include a fresh dependency installation, both examples, module imports, syntax, manifest/path consistency and re-execution of 08/09 from the full 5,890-species derived table. Their ten CSV outputs match the source-code outputs exactly. Calculation logic and numeric parameters were preserved during path reorganization.
-
-The complete global grid, IUCN geometry processing, global intersections and all sensitivity workflows have not been rerun end to end for this repository. A passing example is not full-study reproduction.
-
-- RWR sums each species' within-cell area divided by its global range area; it is dimensionless.
-- Primary buffers are 30 km; sensitivity distances are 10, 20, 30, 40 and 50 km.
-- Full randomization uses 9,999 iterations, seed 20260728, and sampling with replacement within 77 mine-host countries.
-- Spatial overlap measures potential exposure, not observed habitat loss.
-- Attribution retains HKG and leaves unknown shares unattributed; known shares are not rescaled to 100%. Inherited `NamedDisplay` outputs omit HKG only from selected named displays.
-- The 959-mine complete-case analysis is a sensitivity check, not imputation.
-
-## License and citation
-
-Source code and synthetic examples use the [MIT License](LICENSE). This does not relicense included species-derived CSVs or external data, which retain applicable source-data conditions, including [IUCN terms](https://www.iucnredlist.org/terms/terms-of-use).
-
-Please cite the accompanying manuscript, the exact code version or commit used, and the companion Zenodo dataset. Author-level citation metadata and persistent identifiers will be added when finalized; no paper DOI or code-archive DOI is assigned here. Usage questions can be raised through the repository's Issues page.
+- National Natural Science Foundation of China (72274187, 72534006).
+- Deep Earth Probe and Mineral Resources Exploration-National Science and Technology Major Project (2025ZD1007007).
+- Key R&D Program of China (2024YFC3712900).

@@ -17,6 +17,11 @@ sys.path.insert(0, str(ROOT / "analysis"))
 
 def configure(args):
     from _paths import validate_roots
+    # Accept either the complete dataset or its original-layout raw inputs.
+    deposit_root = args.data_root.expanduser().resolve()
+    if (deposit_root / "10Raw_Inputs").is_dir():
+        validate_roots(deposit_root, args.work_root)
+        args.data_root = deposit_root / "10Raw_Inputs"
     data_root, work_root = validate_roots(args.data_root, args.work_root)
     os.environ["NC_DATA_ROOT"] = str(data_root)
     os.environ["NC_WORK_ROOT"] = str(work_root)
@@ -95,7 +100,8 @@ def main():
     parser.add_argument("--check", action="store_true", help="Check external inputs and prerequisites for selected steps; run no analysis")
     parser.add_argument("--steps", nargs="+", choices=[r["step"] for r in MANIFEST])
     parser.add_argument("--all", action="store_true", help="Run all steps including spatial sensitivities")
-    parser.add_argument("--data-root", type=Path, default=ROOT / "inputs")
+    parser.add_argument("--data-root", type=Path, default=ROOT / "data",
+                        help="Complete dataset or raw input root (default: data beside this script)")
     parser.add_argument("--work-root", type=Path, default=ROOT / "work")
     parser.add_argument("--prepare-buffer", action="store_true", help="Build the primary buffer from licensed mine footprints")
     parser.add_argument("--capped-check", action="store_true", help="Run the previously reported 1,000,000-km2 cap check in step 08")

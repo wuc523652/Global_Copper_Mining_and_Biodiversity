@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "all_grid_count_rows": 1404063,
+  "all_grid_species_pairs": 7783,
+  "all_count_and_taxon_fields_equal": true,
+  "all_association_fields_equal": true,
+  "note": "Newly intersected raw IUCN geometries and archived global base grid; priority list supplied from original validated 07 results."
+}

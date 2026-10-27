@@ -14,6 +14,7 @@ All outputs are written below:
 from __future__ import annotations
 
 from _paths import project_path as _nc_project, data_path as _nc_data, analysis_script as _nc_script
+from _ownership_labels import normalize_registration_names
 
 import importlib.util
 import json
@@ -83,7 +84,7 @@ RANGE_WIDESPREAD_THRESHOLD_KM2 = 250000.0
 PRIORITY_EPSILON = 1e-12
 AREA_VALIDATION_TOLERANCE_KM2 = 1e-3
 RELATIVE_VALIDATION_TOLERANCE = 1e-8
-DISPLAY_OMITTED_ISO3 = {"HKG"}
+DISPLAY_OMITTED_ISO3 = set()
 
 
 def ensure_inputs() -> None:
@@ -200,7 +201,9 @@ def strict_buffer_wgs84(geometry, radius_km: float, resolution: int = 16):
 
 
 def read_table(path: Path) -> pd.DataFrame:
-    return pd.read_csv(path, encoding="utf-8-sig", dtype={"property_id": str, "species_id": str}, low_memory=False)
+    return normalize_registration_names(pd.read_csv(
+        path, encoding="utf-8-sig", dtype={"property_id": str, "species_id": str}, low_memory=False
+    ))
 
 
 def build_buffers(master: pd.DataFrame) -> tuple[dict[int, gpd.GeoDataFrame], pd.DataFrame]:
@@ -538,7 +541,7 @@ def calculate_exposure_tables(
 
 
 def import_attribution_module():
-    spec = importlib.util.spec_from_file_location("hkg_attribution", ATTRIBUTION_MODULE_PATH)
+    spec = importlib.util.spec_from_file_location("ownership_attribution", ATTRIBUTION_MODULE_PATH)
     if spec is None or spec.loader is None:
         raise ImportError(f"Cannot load attribution module: {ATTRIBUTION_MODULE_PATH}")
     module = importlib.util.module_from_spec(spec)
@@ -913,7 +916,7 @@ def main() -> None:
         "equal_area_crs": EQUAL_AREA_CRS,
         "species_attribute_filtering": "none; downloaded vector ranges used directly",
         "ownership_missing_share_rule": "not normalized; retained as unattributed",
-        "hkg_rule": "included in calculations; omitted only from named-country display tables",
+        "registration_display_rule": "all countries and regions retained in named display tables",
         "python": sys.version,
         "platform": platform.platform(),
         "geopandas": gpd.__version__,

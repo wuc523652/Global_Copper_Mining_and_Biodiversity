@@ -1,0 +1,8 @@
+matplotlib>=3.7,<4
+numpy>=1.24,<3
+pandas>=2.0,<3
+openpyxl>=3.1,<4
+geopandas>=1.0,<2
+pyogrio>=0.9,<1
+shapely>=2.0,<3
+pyproj>=3.5,<4

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "algorithm": "WGS84 intersects; unique grid_id/species_id; original geometry filtering",
+  "valid_grid_count": 1404063,
+  "nonzero_grid_count": 4771,
+  "grid_species_pairs": 7783,
+  "priority_species": 203,
+  "priority_species_in_grid": 203,
+  "source_grid": "<validation-workspace>\\priority_grid_check\\01_grid\\Global_10km_grid.gpkg",
+  "source_priority_list": "<validation-workspace>\\priority_grid_check\\07_priority_species\\Species_PrioritySpecies_Priority.csv",
+  "note": "Cells excluded during WGS84 geometry filtering are absent, not zero-richness cells."
+}

@@ -51,7 +51,7 @@ EQUAL_AREA_CRS = "ESRI:54009"
 OUTPUT_CRS = "EPSG:4326"
 COMPLETE_SHARE_TOLERANCE_PCT = 1e-6
 AREA_TOLERANCE_KM2 = 1e-5
-DISPLAY_OMITTED_ISO3 = {"HKG"}
+DISPLAY_OMITTED_ISO3 = set()
 
 
 def import_module(path: Path, name: str):
@@ -297,11 +297,11 @@ def main() -> None:
         method="min", ascending=False
     )
 
-    investor_rank_correlation = float(investor_compare["main_rank"].corr(
-        investor_compare["complete_case_rank"], method="pearson"
+    investor_rank_correlation = float(investor_compare["main_foreign_area_km2"].corr(
+        investor_compare["complete_case_foreign_area_km2"], method="spearman"
     ))
-    bilateral_rank_correlation = float(bilateral_compare["main_rank"].corr(
-        bilateral_compare["complete_case_rank"], method="pearson"
+    bilateral_rank_correlation = float(bilateral_compare["main_foreign_area_km2"].corr(
+        bilateral_compare["complete_case_foreign_area_km2"], method="spearman"
     ))
     investor_top10_main = set(investor_compare.nsmallest(10, "main_rank")["investor_iso3"].astype(str))
     investor_top10_complete = set(investor_compare.nsmallest(10, "complete_case_rank")["investor_iso3"].astype(str))
@@ -350,6 +350,9 @@ def main() -> None:
     )
 
     complete_unattributed = float(complete_record["unattributed_area_km2"])
+    complete_named = common.read_table(
+        complete_attribution_dir / "Investor_Country_Summary_NamedDisplay.csv"
+    )
     qa = pd.DataFrame([
         {
             "check": "complete_case_selection_nonempty",
@@ -376,10 +379,10 @@ def main() -> None:
             "status": "PASS" if float(complete_global_exposure.iloc[0]["global_strict_physical_exposure_area_km2"]) <= float(main_record["global_strict_physical_exposure_area_km2"]) + AREA_TOLERANCE_KM2 else "FAIL",
         },
         {
-            "check": "hkg_retained_in_complete_case_calculations_if_eligible",
-            "value": int((complete_attribution_dir / "NamedDisplay_Omission_Audit.csv").exists()),
-            "expected": 1,
-            "status": "PASS" if (complete_attribution_dir / "NamedDisplay_Omission_Audit.csv").exists() else "FAIL",
+            "check": "complete_case_named_display_retains_all_registrations",
+            "value": complete_named["investor_iso3"].nunique(),
+            "expected": complete_investor["investor_iso3"].nunique(),
+            "status": "PASS" if set(complete_named["investor_iso3"]) == set(complete_investor["investor_iso3"]) else "FAIL",
         },
     ])
     qa.to_csv(COMPARISON_DIR / "OwnershipMissingness_QA.csv", index=False, encoding="utf-8-sig")
@@ -406,7 +409,7 @@ def main() -> None:
         "complete_case_mines": len(complete_ids),
         "imputation": "none",
         "spatial_union": "recomputed within complete-case sample",
-        "hkg_rule": "included in calculations; omitted only from named-country display tables",
+        "registration_display_rule": "all countries and regions retained in named display tables",
         "python": sys.version,
         "platform": platform.platform(),
         "geopandas": gpd.__version__,

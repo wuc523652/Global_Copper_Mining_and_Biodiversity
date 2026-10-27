@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+geopandas
+pyogrio
+shapely
+pyproj
+openpyxl
+Pillow

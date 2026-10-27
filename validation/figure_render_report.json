@@ -1,0 +1,135 @@
+{
+  "data_root": "<zenodo-data-root>",
+  "output_root": "<validation-workspace>\\release_run\\figures",
+  "figures": [
+    {
+      "figure": "1",
+      "elapsed_seconds": 94.822,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "2",
+      "elapsed_seconds": 1.689,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "3",
+      "elapsed_seconds": 3.131,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "4",
+      "elapsed_seconds": 53.186,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "5",
+      "elapsed_seconds": 2.026,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "6",
+      "elapsed_seconds": 15.539,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "7",
+      "elapsed_seconds": 1.854,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S1",
+      "elapsed_seconds": 30.544,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S2",
+      "elapsed_seconds": 2.209,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S3",
+      "elapsed_seconds": 2.301,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S4",
+      "elapsed_seconds": 1.608,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S5",
+      "elapsed_seconds": 1.775,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S6",
+      "elapsed_seconds": 12.924,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S7",
+      "elapsed_seconds": 2.054,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S8",
+      "elapsed_seconds": 1.955,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    },
+    {
+      "figure": "S9",
+      "elapsed_seconds": 1.567,
+      "returncode": 0,
+      "formats": [
+        "png"
+      ]
+    }
+  ],
+  "complete": true
+}

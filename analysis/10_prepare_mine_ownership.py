@@ -24,6 +24,7 @@
 """
 
 from _paths import project_path as _nc_project, data_path as _nc_data, analysis_script as _nc_script
+from _ownership_labels import REGISTRATION_DISPLAY_NAMES
 
 from pathlib import Path
 import re
@@ -122,6 +123,7 @@ COUNTRY_ISO3_OVERRIDES = {
     "ivory coast": "CIV",
     "cote d ivoire": "CIV",
     "hong kong sar china": "HKG",
+    "hong kong china": "HKG",
     "taiwan province of china": "TWN",
 }
 
@@ -219,6 +221,7 @@ def build_country_lookup(gadm: gpd.GeoDataFrame):
         iso: name for name, iso in zip(table[name_field], table[iso_field]) if len(iso) == 3
     }
     name_to_iso.update(COUNTRY_ISO3_OVERRIDES)
+    iso_to_name.update(REGISTRATION_DISPLAY_NAMES)
     return name_to_iso, iso_to_name
 
 

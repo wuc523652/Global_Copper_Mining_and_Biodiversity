@@ -1,0 +1,456 @@
+{
+  "local_release_date": "2026-10-27",
+  "remote_publication_performed": false,
+  "paired_dataset_manifest_sha256": "e0b1d90250b4eb8a6c94f4d465672b4cccff314cf0c46efb6f97cd5bd510ee48",
+  "dataset_files_excluding_manifest": 228,
+  "dataset_bytes_excluding_manifest": 3050939567,
+  "validation": "validation/unified_run.json",
+  "raw_pipeline_end_to_end_completed": false,
+  "code_inventory_excludes": [
+    ".git",
+    "data",
+    "caches",
+    "environments",
+    "local inputs and generated outputs",
+    "this metadata file"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 450,
+      "sha256": "7e72674a4ef346413f1a17c536fa409f57d5c64f3921daa0e89bb1a97e19666d"
+    },
+    {
+      "path": "analysis/01_build_global_grid.py",
+      "bytes": 5195,
+      "sha256": "4edbe9128232a544529a0081ef4faba801a76845e6cee16eb40932386dd4fea4"
+    },
+    {
+      "path": "analysis/02_calculate_rarity_weighted_richness.py",
+      "bytes": 21508,
+      "sha256": "8b54bc486c9d80055e05dc6093975de9567d12b472086f50ba382df5258ab0d8"
+    },
+    {
+      "path": "analysis/03_calculate_species_richness.py",
+      "bytes": 8412,
+      "sha256": "adaebcb105fcc4843914277c0df7857f434bcb3e10c4fa1b40f6a861dc970887"
+    },
+    {
+      "path": "analysis/04_calculate_mine_species_overlap.py",
+      "bytes": 70566,
+      "sha256": "3d27b57aae5397888ce7ae3f0b54bb0ab050a62a8087ef2a57f8c1fc83c736de"
+    },
+    {
+      "path": "analysis/05_summarize_rwr_overlap.py",
+      "bytes": 23879,
+      "sha256": "978ec8dc298934a4fd9d67d3ef7f9f55aeebb98c7758337ca5db49ec91fcfe96"
+    },
+    {
+      "path": "analysis/06_country_stratified_randomization.py",
+      "bytes": 41754,
+      "sha256": "8e3f95bde6c66dc18418d1d42fbc3c18e844dfebcae5e00450dbf6fa34f33d7f"
+    },
+    {
+      "path": "analysis/07_screen_priority_species.py",
+      "bytes": 44344,
+      "sha256": "93ddfdf0afb18489eac927a0f8440c28114c852bd8bd238fe14dce829dbdd317"
+    },
+    {
+      "path": "analysis/08_compare_priority_rules.py",
+      "bytes": 26901,
+      "sha256": "49933387f6e2dae71ac3f04f7756b8e036e78cc16ac15a538299d8abf4c7fa6f"
+    },
+    {
+      "path": "analysis/09_priority_boundary_diagnostics.py",
+      "bytes": 8223,
+      "sha256": "b70ac7fac654862e8c3000b991ee3019ef44ceecb9c5aba57f02ac63c4891335"
+    },
+    {
+      "path": "analysis/10_prepare_mine_ownership.py",
+      "bytes": 27576,
+      "sha256": "15de5d6dccf8982cadaaf89fadb897fec52e4de9d172d5203c56483691b29e55"
+    },
+    {
+      "path": "analysis/11_calculate_mine_exposure.py",
+      "bytes": 17642,
+      "sha256": "a2b510ee34a49d6b8621243ec6ac577f1b364c70d44013be4d2e9faa0fa9aa24"
+    },
+    {
+      "path": "analysis/12_attribute_exposure_by_ownership.py",
+      "bytes": 26112,
+      "sha256": "b80bd1612d4299814201df04e4f40cdd394f87b36254c589d4859d1140919cae"
+    },
+    {
+      "path": "analysis/13_link_mines_and_priority_species.py",
+      "bytes": 14656,
+      "sha256": "0772527e3d5b30ca937e68bf79ed37b083bc3050e773a51c752d88470a20caac"
+    },
+    {
+      "path": "analysis/14_summarize_conservation_portfolios.py",
+      "bytes": 36974,
+      "sha256": "9405477a9aea5dff9432b227ac82be24cde9cc4e78ac2af4aa7f39c8d890340d"
+    },
+    {
+      "path": "analysis/15_buffer_distance_sensitivity.py",
+      "bytes": 44755,
+      "sha256": "e93966d8769b5644c60987902c612f999da025c5756a03f4c11685e270f8771c"
+    },
+    {
+      "path": "analysis/16_ownership_completeness_sensitivity.py",
+      "bytes": 21050,
+      "sha256": "99634d11526befde8b9ac1697e113339132761ab7e2dc9892ce60fe522a89f67"
+    },
+    {
+      "path": "analysis/17_calculate_priority_grid.py",
+      "bytes": 21824,
+      "sha256": "c93180de6f1194061d30cdc5e12df6b2bc82a8f87fecc02317f61adc0eb1c491"
+    },
+    {
+      "path": "analysis/_ownership_labels.py",
+      "bytes": 519,
+      "sha256": "8b03c7c483041ccfc9e980fcbed5d36f0218e7fca762737e15bd34a1fa2d1a4e"
+    },
+    {
+      "path": "analysis/_paths.py",
+      "bytes": 2217,
+      "sha256": "35fcb497ae5bb65a16ae5515bd7ffd7d4955e027ff5017cad05b98958bb0995f"
+    },
+    {
+      "path": "analysis_manifest.json",
+      "bytes": 7789,
+      "sha256": "f5fc24cad5f91c186caebab41bc451d37da5595d5b080761314177a211489a30"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1108,
+      "sha256": "d3f292b1e4312873e0b8704c51521d54de2dab8dd1c9e98607f29977710f9a88"
+    },
+    {
+      "path": "plotting/data_paths.py",
+      "bytes": 1546,
+      "sha256": "10ceb6f207660deaf3ba46b7cbc2c38e0ff941b1ea66b8788d412d8bca440001"
+    },
+    {
+      "path": "plotting/main/common.py",
+      "bytes": 10589,
+      "sha256": "e7fb0ba7bdb22e31e0550fb1e8114af2b41410b2c27629651874c53143fdfe11"
+    },
+    {
+      "path": "plotting/main/figure_01.py",
+      "bytes": 1343,
+      "sha256": "bfc39883c6b852d44093872925e6d0ed9cffab747f9e3d0a3f875b9cf427eadc"
+    },
+    {
+      "path": "plotting/main/figure_02.py",
+      "bytes": 1523,
+      "sha256": "8c557fe6b532bfdef4942559d8b567e9fb16f7a872f1f318363158aa066b0805"
+    },
+    {
+      "path": "plotting/main/figure_03.py",
+      "bytes": 2917,
+      "sha256": "1b978ff26cdb8f06c97b489c9ce52ab44a37ba54ca9b3f999e12e3da0902336d"
+    },
+    {
+      "path": "plotting/main/figure_04.py",
+      "bytes": 4619,
+      "sha256": "315ea08e2bacc5fc62965a8817ec1c4dea01236647ed872722621cc39ab889f2"
+    },
+    {
+      "path": "plotting/main/figure_05.py",
+      "bytes": 7254,
+      "sha256": "4e6dd17279863355ba59384d7713996e730a9576a6bf208ee4f2c71b2c3b3f42"
+    },
+    {
+      "path": "plotting/main/figure_06.py",
+      "bytes": 3553,
+      "sha256": "28f1486d6ca80687812bbb682c34fb2d67f28228e311a72405bdd7b5ad2ac841"
+    },
+    {
+      "path": "plotting/main/figure_07.py",
+      "bytes": 5871,
+      "sha256": "3a898d34fdd67ab2e56402caeb8d4acfe997cea04f548d0b36e875711ef1ddf4"
+    },
+    {
+      "path": "plotting/main/global_patterns.py",
+      "bytes": 17574,
+      "sha256": "f439d7b0b545b83bd20c0336372572b38a272217917979f5f8217293ade3da24"
+    },
+    {
+      "path": "plotting/main/layout_alignment.py",
+      "bytes": 13530,
+      "sha256": "d279c0dc8a28fa3e79ab712b2a932cddf81c68b1a9304dc9cba69252f67cb9f0"
+    },
+    {
+      "path": "plotting/main/ownership_panels.py",
+      "bytes": 7223,
+      "sha256": "2a1e94dd936546887af9d2bde7c3a2ea5597eaf78c0cc665ed5493cad8fed8b3"
+    },
+    {
+      "path": "plotting/main/plot_inputs.py",
+      "bytes": 6249,
+      "sha256": "61c8013fc8285cb1fb7db493dad9ed17f26ede48a976599836a8f9375babc89b"
+    },
+    {
+      "path": "plotting/main/priority_panels.py",
+      "bytes": 16780,
+      "sha256": "646722be53521a16e9af53be21cfdc894e0b73262c65f15d01ec6dd13b2bc244"
+    },
+    {
+      "path": "plotting/main/README.md",
+      "bytes": 2344,
+      "sha256": "05ad23286ba7182ebaf262796b36a381cb50734d83614c5ec85f633d571b3c83"
+    },
+    {
+      "path": "plotting/main/requirements.txt",
+      "bytes": 82,
+      "sha256": "f1cce84ae2c30b94a40af656c47c1a51fbf496757e196358719ab2815c3f8e82"
+    },
+    {
+      "path": "plotting/main/sankey.py",
+      "bytes": 31218,
+      "sha256": "d9f98a7ab677ba23f8ce0c2a8cba1acb93214eb5de50caa394ed5ec5935c7337"
+    },
+    {
+      "path": "plotting/README.md",
+      "bytes": 4142,
+      "sha256": "668fb8ecb0a56b3c735d76615e781e536331a5082fc1413cf5860d571fd89701"
+    },
+    {
+      "path": "plotting/render_all.py",
+      "bytes": 4211,
+      "sha256": "ea21a8daef67360b5684a776e27d19ad6060f6f9dc14aeeac31cbe0d63985ccd"
+    },
+    {
+      "path": "plotting/supplementary/README.md",
+      "bytes": 3637,
+      "sha256": "7ff06d8a145a5017a42bbefb1367aae775eae02c4535d065663c85c46ca05141"
+    },
+    {
+      "path": "plotting/supplementary/render_supplementary.py",
+      "bytes": 14693,
+      "sha256": "8753568937bce3eb45b1ce3e96986ed7d6703816e41ed99da6eabd8dea52dec2"
+    },
+    {
+      "path": "plotting/supplementary/requirements.txt",
+      "bytes": 131,
+      "sha256": "d31bc4ecb7f74cacf41ac80fde7ef983758aa318e1acb5ba03fe1d5ad68af62c"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_1.py",
+      "bytes": 2587,
+      "sha256": "1e77049c620a534eca9e9dc7488691c1412e1bc473a8eeb718a51dfde63f8bc5"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_2.py",
+      "bytes": 4058,
+      "sha256": "7fe043e53a910758d3ef7c6dcfe279d23e88d8374fb7578f89ad11da2940ee65"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_3.py",
+      "bytes": 2861,
+      "sha256": "10175a7d0cfa2b0e188eda3933f83892acfa8927ec44b9dfe48bc0abf18e5428"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_4.py",
+      "bytes": 3008,
+      "sha256": "aa02bfc68a2daa4cd3736195d43a8f3ee1e9d79d10396a99782223d12aa4f085"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_5.py",
+      "bytes": 5679,
+      "sha256": "b44201f9e88faa7adfd32a39f3ddcd57dafa879c5ecef034920978ccc4b9f58a"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_6.py",
+      "bytes": 4992,
+      "sha256": "3a002b95d749d2b5f14eb60d05cffa6929c7089212e5483927b1ffddc118c563"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_7.py",
+      "bytes": 3531,
+      "sha256": "cbba7d5cab44736315a335c99e36d6c15eedd9f0e0f09312892f88d79722ffc0"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_8.py",
+      "bytes": 6237,
+      "sha256": "bbb3c95f38ed1352b3438feaed77731fec6c9d55a0bdf34fd5e2e1c2abc3ff44"
+    },
+    {
+      "path": "plotting/supplementary/supplementary_9.py",
+      "bytes": 8937,
+      "sha256": "3bc00d89a2edca62979ae31954f91b78a67b5f246c67cdf52e7586f5c0ba7f0e"
+    },
+    {
+      "path": "plotting/VALIDATION.md",
+      "bytes": 3446,
+      "sha256": "c4aaf09b9d04481fe5dbf59a2cd4d461eaabad5662b68014c4149e87580a4294"
+    },
+    {
+      "path": "README.md",
+      "bytes": 13015,
+      "sha256": "55323e738aed749286558602791757f647d1a4342045a6dd539cfa6bd1000bf1"
+    },
+    {
+      "path": "reproduce.py",
+      "bytes": 3037,
+      "sha256": "15edc26e9426364c64256663672da1ba1dd716d70a6f5784f9920a0982c35d85"
+    },
+    {
+      "path": "reproduction/publication_checks.py",
+      "bytes": 14748,
+      "sha256": "fa429478705f75a46d7349fa94eb3c4e9d9d4a66ef7551ef31023c1794a44b0d"
+    },
+    {
+      "path": "reproduction/README.md",
+      "bytes": 5020,
+      "sha256": "b0618360374a11ddae9c35453d580ff9ea8c126b5c9c4e28ea50a75384e7a627"
+    },
+    {
+      "path": "reproduction/recompute.py",
+      "bytes": 24894,
+      "sha256": "418ecac2d955c3765c54859d3ea23a7d2b79506a5c02c21c181d7bd09af41a2f"
+    },
+    {
+      "path": "reproduction/test_comparison.py",
+      "bytes": 1368,
+      "sha256": "d454b1933d12bb2d03e285605382b9c12177daa72f5a4ae18f9bc76e8fe77265"
+    },
+    {
+      "path": "reproduction/verification_snapshot.json",
+      "bytes": 30168,
+      "sha256": "de6c2dbce2ac25eadaffa9260b930e818b111627fdc25bdfcad51e0543040150"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 223,
+      "sha256": "6cdcff65eb89ffed2e111cf1d93af22d9cb405eba1b42019c1fe9f5b07eab308"
+    },
+    {
+      "path": "run_analysis.py",
+      "bytes": 8086,
+      "sha256": "23bb156bb3643dc630e1c36eda871b8d9eda877ef10dd39b78c57823465fba3f"
+    },
+    {
+      "path": "tools/data_manifest.py",
+      "bytes": 3687,
+      "sha256": "ef251475f4cb947faa348f1a1f62717ebbbb3ebc32dbee8211336d79b6cd6633"
+    },
+    {
+      "path": "tools/package_raw_inputs.py",
+      "bytes": 3735,
+      "sha256": "e79eb059dae9f1459beb425ea29ef2dd8c4da778096fdcd0621690004d278769"
+    },
+    {
+      "path": "tools/update_submission_tables.py",
+      "bytes": 15907,
+      "sha256": "9de61929c06b73d1d4282dc380c11115d7e59e2be4dd7dcbeb3fe834f48eb5b5"
+    },
+    {
+      "path": "validation/calculation_comparison.json",
+      "bytes": 30170,
+      "sha256": "61036eab5ec6f500c3f0a3f06b4db33cb15020d7add762afac285540bbae4492"
+    },
+    {
+      "path": "validation/entrypoint_validation.json",
+      "bytes": 604,
+      "sha256": "6f21ca77f86201deca8c9716a393c55cb4ac5aec169a24673dd65b451f52c358"
+    },
+    {
+      "path": "validation/environment_versions.json",
+      "bytes": 492,
+      "sha256": "7844327a5eecd71ebf666b5ebcd2831bada3a7810e836682bfb80d435c90f0d2"
+    },
+    {
+      "path": "validation/figure_comparison_report.json",
+      "bytes": 13769,
+      "sha256": "e8c1fc418d785376a25837610088496230d33724fa81555c4a49b63720c2b889"
+    },
+    {
+      "path": "validation/figure_render_report.json",
+      "bytes": 2373,
+      "sha256": "f5675b40e381df1cff9a993114797f6f8bc2308a7e3e74e4b9839a9acbb9883c"
+    },
+    {
+      "path": "validation/local_data_layout_20261027.json",
+      "bytes": 2305,
+      "sha256": "6696413dc2c92753c0e949739a36b2dc34dc1525a8a0c5701cd1864162bcf8d8"
+    },
+    {
+      "path": "validation/local_data_layout_20261027.md",
+      "bytes": 4032,
+      "sha256": "b10bc1fcb72e2b81e588f3d12c08a8f33a1ee2bb1704f8e8017aa39e6bbe5ca9"
+    },
+    {
+      "path": "validation/priority_grid_comparison.json",
+      "bytes": 324,
+      "sha256": "a26d40a5dfb769b134223ce1d6ad03cf0ecf04c73b8fcce588d7b024794e3fdc"
+    },
+    {
+      "path": "validation/priority_grid_run.json",
+      "bytes": 604,
+      "sha256": "bf297cb6360e9c797b5b8ad165306ce0387a17aa9d359a3fc13092a062bb2709"
+    },
+    {
+      "path": "validation/raw_ownership_comparison.json",
+      "bytes": 592,
+      "sha256": "96928a5a284cf0b5584fb647da8b732239cab08c115dbf9faffbf458a531fe7e"
+    },
+    {
+      "path": "validation/README.md",
+      "bytes": 4821,
+      "sha256": "87abb5dcb944c5b9e06ddcd8c31e84a9b6ad38761b6828088f96e8734eb125dc"
+    },
+    {
+      "path": "validation/test_local_data_layout.py",
+      "bytes": 4926,
+      "sha256": "a9565b69c7608314a47a3442fc987e0b006db7d87dbd3acbfa7e0cb2478552f7"
+    },
+    {
+      "path": "validation/unified_run.json",
+      "bytes": 617,
+      "sha256": "cc23990e85a770db66c4e4ab78d713f6598a63740877e7626762df51426205a2"
+    },
+    {
+      "path": "复现使用说明.md",
+      "bytes": 4506,
+      "sha256": "ee12d5d2917064a428151f409f69218c0fec34b091ce3bba4c5ec7eab408ab42"
+    }
+  ],
+  "scientific_validation_date": "2026-10-18",
+  "metadata_update_scope": "Complete dataset copied into data/; entry-point defaults and documentation updated. Scientific algorithms, parameters, data bytes and access conditions unchanged. No remote publication. Optional demo directory removed from the distribution with an external backup; post-removal integrity, input and path checks passed.",
+  "manuscript_metadata": {
+    "title": "Global conservation priorities for vertebrates threatened by copper mining",
+    "authors_status": "pending confirmation",
+    "funding": [
+      {
+        "funder": "National Natural Science Foundation of China",
+        "award_numbers": [
+          "72274187",
+          "72534006"
+        ]
+      },
+      {
+        "funder": "Deep Earth Probe and Mineral Resources Exploration-National Science and Technology Major Project",
+        "award_numbers": [
+          "2025ZD1007007"
+        ]
+      },
+      {
+        "funder": "Key R&D Program of China",
+        "award_numbers": [
+          "2024YFC3712900"
+        ]
+      }
+    ]
+  },
+  "related_resources": {
+    "code_repository_url": "https://github.com/wuc523652/Global_Copper_Mining_and_Biodiversity",
+    "dataset_doi": "10.5281/zenodo.23277107",
+    "dataset_identifier_status": "reserved_unpublished",
+    "remote_release_or_commit_status": "not confirmed by this local metadata update",
+    "dataset_download_location": "GitHub Release assets; upload pending"
+  },
+  "local_dataset_directory": "data",
+  "layout_validation": "validation/local_data_layout_20261027.json",
+  "demo_included": false
+}

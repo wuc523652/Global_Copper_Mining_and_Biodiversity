@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-27",
+  "source_dataset": "../../Zenodo/Global_Copper_Mining_and_Biodiversity",
+  "copied_dataset": "data",
+  "source_and_copy_manifest_sha256": "e0b1d90250b4eb8a6c94f4d465672b4cccff314cf0c46efb6f97cd5bd510ee48",
+  "source_and_copy_files_verified_excluding_manifest": 228,
+  "copied_files_including_manifest": 229,
+  "raw_stage10": [
+    {
+      "file": "Mine_Master_30km.csv",
+      "rows": 1278,
+      "columns": 19,
+      "status": "PASS",
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    {
+      "file": "Mine_Owner_Share_Ledger.csv",
+      "rows": 1491,
+      "columns": 18,
+      "status": "PASS",
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    {
+      "file": "Mine_Ownership_Coverage.csv",
+      "rows": 1278,
+      "columns": 17,
+      "status": "PASS",
+      "rtol": 1e-10,
+      "atol": 1e-10
+    }
+  ],
+  "priority_recompute": {
+    "status": "PASS",
+    "checks": 13
+  },
+  "figure_rendering": {
+    "complete": true,
+    "figures": [
+      "2"
+    ]
+  },
+  "environment": {
+    "python": "3.13.3 | packaged by conda-forge | (main, Apr 14 2025, 20:31:24) [MSC v.1943 64 bit (AMD64)]",
+    "environment": "Existing geo-backed validation venv; PROJ_DATA and GDAL_DATA explicitly set to matching conda resources"
+  },
+  "initial_raw_attempt": "Failed before scientific processing because PROJ/GDAL resource directories were not configured; retried in a separate output directory after setting the matching resources.",
+  "full_raw_pipeline_rerun": false,
+  "all_statistics_and_all_figures_rerun": false,
+  "remote_publication_performed": false,
+  "path_regression_tests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "existing_comparator_tests": {
+    "passed": 3,
+    "failed": 0
+  },
+  "scientific_stage_scripts_unchanged": 17,
+  "copied_bytes_including_manifest": 3050985840,
+  "demo_removal": {
+    "date": "2026-10-27",
+    "removed_from_distribution": true,
+    "backup_preserved_outside_distribution": true,
+    "removed_files": 4,
+    "post_removal_data_integrity": "PASS: 228 listed data files",
+    "post_removal_full_input_preflight": "PASS",
+    "post_removal_path_tests": "PASS: 10 tests",
+    "scientific_algorithms_modified": false,
+    "remote_publication_performed": false
+  }
+}

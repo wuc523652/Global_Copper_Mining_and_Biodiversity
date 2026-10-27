@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "intact inventory",
+      "status": "PASS"
+    },
+    {
+      "check": "same-length content change is rejected by hash",
+      "status": "PASS"
+    },
+    {
+      "check": "missing input is rejected",
+      "status": "PASS"
+    },
+    {
+      "check": "unlisted input is rejected",
+      "status": "PASS"
+    },
+    {
+      "check": "code/data overlap outputs rejected before mutation",
+      "status": "PASS"
+    },
+    {
+      "check": "stage07 CLI propagates scientific failure",
+      "status": "PASS"
+    }
+  ]
+}

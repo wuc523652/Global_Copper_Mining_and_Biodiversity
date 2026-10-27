@@ -1283,3 +1283,4 @@ if __name__ == "__main__":
         print(f"\n✗ 错误: {e}")
         import traceback
         traceback.print_exc()
+        raise

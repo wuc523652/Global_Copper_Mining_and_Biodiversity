@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-18",
+  "mode": "all",
+  "exit_code": 0,
+  "dataset_integrity": "PASS",
+  "dataset_files": 228,
+  "dataset_bytes_excluding_manifest": 3050938343,
+  "calculation_checks": 50,
+  "calculation_status": "PASS",
+  "rendered_figures": 16,
+  "all_final_png_files_match_first_validated_run": true,
+  "raw_full_pipeline_completed": false,
+  "notes": [
+    "Mode all recomputes statistics from archived spatial inputs then renders archived publication data.",
+    "Full raw-input stage10 and priority-grid stage17 were separately exercised; the entire raw workflow was not completed."
+  ]
+}

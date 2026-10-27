@@ -9,9 +9,11 @@ env/
 .mypy_cache/
 .ruff_cache/
 
+# Complete local dataset; distribute through release assets, not ordinary Git.
+/data/
+
 # Local inputs and generated output
 /inputs/
-/data/
 /work/
 /results/
 /outputs/

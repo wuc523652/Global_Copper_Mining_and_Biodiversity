@@ -20,10 +20,11 @@
 "mine_union_unbalanced"；该模式仍不按物种叠加，但会重复计算不同矿区共享的空间。
 
 所有未知股权和投资国未解析股权均保留为 unattributed，不会把已知股权归一化到100%。
-HKG记录正常进入全部计算和全球汇总；仅另行生成的具名国家展示表隐藏HKG。
+全部可解析注册地记录进入计算、全球汇总和具名展示表。
 """
 
 from _paths import project_path as _nc_project, data_path as _nc_data, analysis_script as _nc_script
+from _ownership_labels import normalize_registration_names
 
 from pathlib import Path
 import json
@@ -70,7 +71,7 @@ ATTRIBUTION_AREA_MODE = "country_union_balanced"
 VALID_AREA_MODES = {"country_union_balanced", "mine_union_unbalanced"}
 BALANCE_TOLERANCE_KM2 = 1e-5
 SHARE_TOLERANCE_PCT = 1e-6
-DISPLAY_OMITTED_ISO3 = {"HKG"}
+DISPLAY_OMITTED_ISO3 = set()
 
 
 # =============================================================================
@@ -80,7 +81,9 @@ DISPLAY_OMITTED_ISO3 = {"HKG"}
 def read_csv(path: Path, label: str) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(f"缺少{label}：{path}")
-    return pd.read_csv(path, encoding="utf-8-sig", dtype={"property_id": str})
+    return normalize_registration_names(
+        pd.read_csv(path, encoding="utf-8-sig", dtype={"property_id": str})
+    )
 
 
 def require_columns(df, columns, label):
@@ -216,7 +219,7 @@ def build_mine_base(master, coverage, mine_exp, country_exp):
 
 def build_investor_attribution(base, ledger):
     print("\n[3/6] 按投资国合并股权并分配面积")
-    ledger = ledger.copy()
+    ledger = normalize_registration_names(ledger)
     ledger["reported_share_pct"] = pd.to_numeric(ledger["reported_share_pct"], errors="coerce")
     resolved = ledger[
         ledger["reported_share_pct"].notna()
@@ -259,7 +262,7 @@ def build_investor_attribution(base, ledger):
         attribution["investor_iso3"].isin(DISPLAY_OMITTED_ISO3)
     ].copy()
     display_omitted_attribution["display_rule"] = (
-        "included in calculations and global totals; omitted only from named-country displays"
+        "all countries and regions retained in calculations and named displays"
     )
     display_omitted_attribution.to_csv(
         OUT_DISPLAY_OMISSION_AUDIT, index=False, encoding="utf-8-sig"
@@ -512,8 +515,8 @@ def save_qa(base, factors, balance, global_summary, display_omitted_attribution)
         ),
         "unknown_share_rule": "not normalized; retained as unattributed",
         "named_country_display_rule": (
-            "All country-resolved records are included in calculations and global totals; "
-            "the separately generated named-country display tables omit HKG"
+            "All countries and regions are retained in calculations, global totals "
+            "and named display tables"
         ),
         "ownership_interpretation": "equity-associated shared governance, not legal liability",
         "global_summary": global_summary.iloc[0].to_dict(),

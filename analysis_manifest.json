@@ -256,5 +256,17 @@
       "12_ownership_attribution/Bilateral_Responsibility_Flow_All.csv"
     ],
     "output_directory": "16_ownership_sensitivity"
+  },
+  {
+    "step": "17",
+    "file": "analysis/17_calculate_priority_grid.py",
+    "purpose": "Recalculate priority-species grid associations and richness",
+    "dependencies": ["01", "07"],
+    "raw_inputs": ["iucn"],
+    "intermediate_inputs": [
+      "01_grid/Global_10km_grid.gpkg",
+      "07_priority_species/Species_PrioritySpecies_Priority.csv"
+    ],
+    "output_directory": "17_priority_grid"
   }
 ]

@@ -1,0 +1,538 @@
+{
+  "figures": [
+    {
+      "figure": "1",
+      "name": "Figure_1.png",
+      "exists": true,
+      "source_size": [
+        1754,
+        2267
+      ],
+      "reproduced_size": [
+        1754,
+        2267
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 3976318,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "2",
+      "name": "Figure_2.png",
+      "exists": true,
+      "source_size": [
+        1862,
+        861
+      ],
+      "reproduced_size": [
+        1862,
+        861
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 1603182,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "3",
+      "name": "Figure_3.png",
+      "exists": true,
+      "source_size": [
+        2050,
+        1177
+      ],
+      "reproduced_size": [
+        2050,
+        1177
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 2412850,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": false
+    },
+    {
+      "figure": "4",
+      "name": "Figure_4.png",
+      "exists": true,
+      "source_size": [
+        2203,
+        1536
+      ],
+      "reproduced_size": [
+        2203,
+        1536
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 3383808,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "5",
+      "name": "Figure_5.png",
+      "exists": true,
+      "source_size": [
+        2084,
+        1219
+      ],
+      "reproduced_size": [
+        2084,
+        1219
+      ],
+      "source_mode": "RGB",
+      "reproduced_mode": "RGB",
+      "differing_pixels": 0,
+      "total_pixels": 2540396,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "6",
+      "name": "Figure_6.png",
+      "exists": true,
+      "source_size": [
+        1763,
+        2781
+      ],
+      "reproduced_size": [
+        1763,
+        2781
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 31310,
+      "total_pixels": 4902903,
+      "max_channel_delta": 255,
+      "pixels_identical": false,
+      "file_identical": false
+    },
+    {
+      "figure": "7",
+      "name": "Figure_7.png",
+      "exists": true,
+      "source_size": [
+        1881,
+        1048
+      ],
+      "reproduced_size": [
+        1881,
+        1048
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 9862,
+      "total_pixels": 1971288,
+      "max_channel_delta": 255,
+      "pixels_identical": false,
+      "file_identical": false
+    },
+    {
+      "figure": "S1",
+      "name": "Supplementary_Figure_1.png",
+      "exists": true,
+      "source_size": [
+        2843,
+        1527
+      ],
+      "reproduced_size": [
+        2843,
+        1527
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 4341261,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "S2",
+      "name": "Supplementary_Figure_2.png",
+      "exists": true,
+      "source_size": [
+        2000,
+        3562
+      ],
+      "reproduced_size": [
+        2000,
+        3562
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 7124000,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "S3",
+      "name": "Supplementary_Figure_3.png",
+      "exists": true,
+      "source_size": [
+        2073,
+        1811
+      ],
+      "reproduced_size": [
+        2073,
+        1811
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 3754203,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "S4",
+      "name": "Supplementary_Figure_4.png",
+      "exists": true,
+      "source_size": [
+        2044,
+        1372
+      ],
+      "reproduced_size": [
+        2044,
+        1372
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 7960,
+      "total_pixels": 2804368,
+      "max_channel_delta": 2,
+      "pixels_identical": false,
+      "file_identical": false
+    },
+    {
+      "figure": "S5",
+      "name": "Supplementary_Figure_5.png",
+      "exists": true,
+      "source_size": [
+        2101,
+        1897
+      ],
+      "reproduced_size": [
+        2101,
+        1897
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 25100,
+      "total_pixels": 3985597,
+      "max_channel_delta": 254,
+      "pixels_identical": false,
+      "file_identical": false
+    },
+    {
+      "figure": "S6",
+      "name": "Supplementary_Figure_6.png",
+      "exists": true,
+      "source_size": [
+        2776,
+        3327
+      ],
+      "reproduced_size": [
+        2776,
+        3327
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 9235752,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "S7",
+      "name": "Supplementary_Figure_7.png",
+      "exists": true,
+      "source_size": [
+        4246,
+        3046
+      ],
+      "reproduced_size": [
+        4246,
+        3046
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 12933316,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "S8",
+      "name": "Supplementary_Figure_8.png",
+      "exists": true,
+      "source_size": [
+        2803,
+        2960
+      ],
+      "reproduced_size": [
+        2803,
+        2960
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 8296880,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": true
+    },
+    {
+      "figure": "S9",
+      "name": "Supplementary_Figure_9.png",
+      "exists": true,
+      "source_size": [
+        4322,
+        3850
+      ],
+      "reproduced_size": [
+        4322,
+        3850
+      ],
+      "source_mode": "RGBA",
+      "reproduced_mode": "RGBA",
+      "differing_pixels": 0,
+      "total_pixels": 16639700,
+      "max_channel_delta": 0,
+      "pixels_identical": true,
+      "file_identical": false
+    }
+  ],
+  "drawing_inputs": [
+    {
+      "path": "Main/figure_1_mine_points.csv",
+      "bytes": 95972,
+      "sha256": "15bb67a047492721609efdef219a5b5c87f3c939cb5feff9d6ea97b17dca0396",
+      "identical": true
+    },
+    {
+      "path": "Main/figure_1_rwr_points.csv.gz",
+      "bytes": 25778176,
+      "sha256": "750586967d0f1a7a62a42756cdb1e576f84e26928bdeb48f38b10014f1e51c72",
+      "identical": true
+    },
+    {
+      "path": "Main/figure_4_habitats.gpkg",
+      "bytes": 5726208,
+      "sha256": "ef878ce017a624e3e909c229b9eb2c73b5950332f74b7fbc06327660f456e52b",
+      "identical": true
+    },
+    {
+      "path": "Main/figure_4_region_extents.csv",
+      "bytes": 387,
+      "sha256": "43c4fba787eedfc2ef4627d62cbaae0f42c614ec30a1e2819d2d436c7d5b23c7",
+      "identical": true
+    },
+    {
+      "path": "Main/figure_4_region_species.csv",
+      "bytes": 9625,
+      "sha256": "a4bffffbf1881fb8a41563d22fa03cf355ff995363e1b766b08ec1b7cb8fdec9",
+      "identical": true
+    },
+    {
+      "path": "Main/figure_6a_registration_selection.csv",
+      "bytes": 400,
+      "sha256": "9921eac2d3115b22b560fc2debe3c19c26eac617a493dd9f32c89c890fb9d28c",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_AUS_original.png",
+      "bytes": 1165919,
+      "sha256": "c33753350706dbe56eafb1a4d24683c09a0c711e311f538e48184f49dfbd7bc9",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_BRA_original.png",
+      "bytes": 1275597,
+      "sha256": "dce2242238b4ed3d1e002536519ac94a1033cc32ea06f401e71ee7976c7623da",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_CAN_original.png",
+      "bytes": 1176631,
+      "sha256": "c2d25c7e9c16eb083cd452478257b22043a05ee0625f7f8c0f04df9baf841344",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_CHE_original.png",
+      "bytes": 1128963,
+      "sha256": "85cf511bd051157e15c67c66862e88d0040613e629424a25ca4914ad3ed98a11",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_CHL_original.png",
+      "bytes": 1135026,
+      "sha256": "0f45779750782994218548fc003cb57248b252d92a0beffec68321fd7851df90",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_CHN_original.png",
+      "bytes": 1174658,
+      "sha256": "384f953a92bfaaab3835680925007d5351e56d35eb63fdf4c55c33b8f322b7bd",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_COD_original.png",
+      "bytes": 987400,
+      "sha256": "6b5f30f84c43c79084ebe0ee14d54f95a7a6ab64c7890b1616a130af21b5f0d5",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_ECU_original.png",
+      "bytes": 1876556,
+      "sha256": "3c029cefbc3c410b96ef5d90d087f0d1bbbc8430dc6ca6f20a3cfb40367dd15c",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_GBR_original.png",
+      "bytes": 1122880,
+      "sha256": "80dd2251503627f621905bff7a4fc3e0838adac841a26e918fceaf25f66e2142",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_MEX_original.png",
+      "bytes": 1672719,
+      "sha256": "5a77a335ba00b92f0d57e36e59d42dff07818a619a5423430fe98c0cdc1bb8ab",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_PER_original.png",
+      "bytes": 1125717,
+      "sha256": "8160f3a41948860476e239af520da36052361e01d0c3b284ec6f8f779beddc6b",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_PHL_original.png",
+      "bytes": 1245657,
+      "sha256": "d347e339ff9c88cf6a7ad2b6f5760126c6879883939067ec63d4c255e9ca01f5",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_USA_original.png",
+      "bytes": 1273745,
+      "sha256": "ffff70e6b4dac1954043badb118870605f976cc931beec5058a38ce485d69f28",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/flag_ZAF_original.png",
+      "bytes": 1224316,
+      "sha256": "09ef395fbf63acec70fedce2709498971a7c4733bfef8501c43b541b580cd576",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/image2.png",
+      "bytes": 9406,
+      "sha256": "624731f15efe138ce94b614e2b338775a49fa9d6a74873eedcf46314d884d9a5",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/image3.png",
+      "bytes": 7920,
+      "sha256": "8a6cc71677120dc4a4332eaba6ad7b6cc7aff7cfa66050d8b1a6bde3b4b958d0",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/image4.png",
+      "bytes": 7422,
+      "sha256": "eb7041efa5aac4831e0a5007b419aa0293c045d4838a9e03c873aa1868997463",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/image5.png",
+      "bytes": 8987,
+      "sha256": "0aac053637fc7d7f8d166bb13dc9ba4d3e1857af6d4f02ab8fc0697a05341cb3",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/image6.png",
+      "bytes": 9234,
+      "sha256": "f4fca012b3bc0758958d8e36a6ce247575a69c21e553440b408fc9d04ed705e7",
+      "identical": true
+    },
+    {
+      "path": "Main/icons/image7.png",
+      "bytes": 7349,
+      "sha256": "27252a678a96e5b940e150d103c5d02e15c7dd22a059f07f4b070f2d8ff94912",
+      "identical": true
+    },
+    {
+      "path": "Main/main_geography.gpkg",
+      "bytes": 42295296,
+      "sha256": "c1b03ce32982f34affe6666480c88a3b6304cb3b64ff21d3a69273ca001de1a6",
+      "identical": true
+    },
+    {
+      "path": "Supplementary/world_s1.gpkg",
+      "bytes": 10579968,
+      "sha256": "533cfa10acdc09b47c459d39ebf4ce647942df1538534c9794017412a4f4cf6f",
+      "identical": true
+    },
+    {
+      "path": "Supplementary/world_s6.gpkg",
+      "bytes": 10678272,
+      "sha256": "4ba56dd11760b724e89d97b299f917990c9340cd7b101f5cacf03e7f26f23639",
+      "identical": true
+    }
+  ],
+  "workbooks": [
+    {
+      "file": "Supplementary_Data_1.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_2.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_3.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_4.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_5.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_6.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_7.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_8.xlsx",
+      "identical": true
+    },
+    {
+      "file": "Supplementary_Data_9.xlsx",
+      "identical": true
+    }
+  ]
+}
